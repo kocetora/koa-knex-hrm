@@ -1,3 +1,5 @@
+'use strict';
+
 exports.up = function(knex) {
   return knex.schema.createTable('forms', function(table) {
     table.increments('formid');
@@ -25,5 +27,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('forms').raw("DROP TYPE IF EXISTS sex, education_grade");
+  return knex.schema.dropTable('forms').raw("DROP TYPE sex, education_grade");
 };
