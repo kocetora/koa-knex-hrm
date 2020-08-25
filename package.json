@@ -4,11 +4,11 @@
   "description": "HRM backend using koa and knex",
   "main": "app.js",
   "dependencies": {
-    "knex": "^0.21.3",
+    "knex": "^0.21.5",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
-    "koa-router": "^9.1.0",
-    "pg": "^8.3.0"
+    "koa-router": "^9.4.0",
+    "pg": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
