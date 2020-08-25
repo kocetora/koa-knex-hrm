@@ -1,5 +1,5 @@
 exports.up = function(knex) {
-  return knex.schema.createTable('users', function(table) {
+  return knex.schema.createTable('forms', function(table) {
     table.increments('formid');
     table.string('name').notNullable();
     table.string('surname').notNullable();
@@ -25,5 +25,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('forms');
+  return knex.schema.dropTable('forms').raw("DROP TYPE IF EXISTS sex, education_grade");
 };
