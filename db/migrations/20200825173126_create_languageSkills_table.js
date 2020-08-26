@@ -17,9 +17,9 @@ exports.up = function(knex) {
   })
   .createTable('forms_languageSkills', function(table) {
     table.integer('languageid').unsigned();
-    table.foreign('languageid').references('languageid').inTable('languageSkills');
+    table.foreign('languageid').references('languageid').inTable('languageSkills').onDelete('CASCADE').onUpdate('CASCADE');
     table.integer('formid').unsigned();
-    table.foreign('formid').references('formid').inTable('forms');
+    table.foreign('formid').references('formid').inTable('forms').onDelete('CASCADE').onUpdate('CASCADE');
   })
 };
 

@@ -6,7 +6,7 @@ exports.up = function(knex) {
     table.string('comment').notNullable();
     table.integer('userid').references('userid').inTable('users');
     table.integer('formid').unsigned();
-    table.foreign('formid').references('formid').inTable('forms');
+    table.foreign('formid').references('formid').inTable('forms').onDelete('CASCADE').onUpdate('CASCADE');
   })
 };
 

@@ -8,9 +8,9 @@ exports.up = function(knex) {
   })
   .createTable('forms_professions', function(table) {
     table.integer('professionid').unsigned();
-    table.foreign('professionid').references('professionid').inTable('professions');
+    table.foreign('professionid').references('professionid').inTable('professions').onDelete('CASCADE').onUpdate('CASCADE');
     table.integer('formid').unsigned();
-    table.foreign('formid').references('formid').inTable('forms');
+    table.foreign('formid').references('formid').inTable('forms').onDelete('CASCADE').onUpdate('CASCADE');
   })
 };
   
