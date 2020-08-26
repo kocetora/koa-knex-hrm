@@ -2,16 +2,15 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable('comments', table => {
-    table.increments('commentid');
+    table.increments('id').primary();
     table.string('comment').notNullable();
-    table.integer('userid').references('userid').inTable('users');
+    table.integer('userid').unsigned().references('users.id');
     table
       .integer('formid')
       .unsigned();
     table
       .foreign('formid')
-      .references('formid')
-      .inTable('forms')
+      .references('forms.id')
       .onDelete('CASCADE')
       .onUpdate('CASCADE');
   });

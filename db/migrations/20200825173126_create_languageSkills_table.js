@@ -3,7 +3,7 @@
 exports.up = function(knex) {
   return knex.schema
     .createTable('languageSkills', table => {
-      table.increments('languageid');
+      table.increments('id').primary();
       table.enu('language', [
         'english',
         'russian'],
@@ -21,16 +21,14 @@ exports.up = function(knex) {
         .unsigned();
       table
         .foreign('languageid')
-        .references('languageid')
-        .inTable('languageSkills')
+        .references('languageSkills.id')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
       table
         .integer('formid')
         .unsigned();
       table.foreign('formid')
-        .references('formid')
-        .inTable('forms')
+        .references('forms.id')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
     });

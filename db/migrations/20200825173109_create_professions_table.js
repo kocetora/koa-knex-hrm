@@ -3,7 +3,7 @@
 exports.up = function(knex) {
   return knex.schema
     .createTable('professions', table => {
-      table.increments('professionid');
+      table.increments('id').primary();
       table.string('profession').notNullable();
     })
     .createTable('forms_professions', table => {
@@ -12,16 +12,14 @@ exports.up = function(knex) {
         .unsigned();
       table
         .foreign('professionid')
-        .references('professionid')
-        .inTable('professions')
+        .references('professions.id')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
       table.integer('formid')
         .unsigned();
       table
         .foreign('formid')
-        .references('formid')
-        .inTable('forms')
+        .references('forms.id')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
     });

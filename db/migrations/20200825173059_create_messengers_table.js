@@ -3,7 +3,7 @@
 exports.up = function(knex) {
   return knex.schema
     .createTable('messengers', table => {
-      table.increments('messengerid');
+      table.increments('id').primary();
       table.enu('messenger', [
         'Telegram',
         'Viber',
@@ -18,8 +18,7 @@ exports.up = function(knex) {
         .unsigned();
       table
         .foreign('messengerid')
-        .references('messengerid')
-        .inTable('messengers')
+        .references('messengers.id')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
       table
@@ -27,8 +26,7 @@ exports.up = function(knex) {
         .unsigned();
       table
         .foreign('formid')
-        .references('formid')
-        .inTable('forms')
+        .references('forms.id')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
     });
