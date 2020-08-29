@@ -13,7 +13,6 @@ exports.up = function(knex) {
         'waiter',
         'barman',
       ], { useNative: true, enumName: 'profession' }).notNullable();
-      table.string('profession').notNullable();
       table
         .integer('formid')
         .unsigned();
