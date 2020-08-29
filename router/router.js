@@ -1,7 +1,7 @@
 'use strict';
 const Router = require('koa-router');
 
-// const login = require('./login');
+const login = require('./login');
 const logout = require('./logout');
 const register = require('./register');
 // const createForm = require('./createForm');
@@ -15,7 +15,7 @@ const register = require('./register');
 // const passport = require('koa-passport');
 
 module.exports = new Router()
-  // .post('/api/login', login())
+  .post('/api/login', login())
   .post('/api/register', register())
   .get('/api/logout', logout());
 
