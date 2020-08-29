@@ -1,17 +1,20 @@
 'use strict';
 const Koa = require('koa');
-const passport = require('koa-passport');
+const Router = require('koa-router');
 const cors = require('@koa/cors');
 const bodyParser = require('koa-bodyparser');
-const router = require('./router/router');
 const PORT = process.env.PORT || 3000;
 
 const app = new Koa();
 app.use(cors());
 app.use(bodyParser());
-app.use(passport.initialize());
-app.use(passport.session());
-require('./config/jwtStrategy')(passport);
+const router = new Router({
+  prefix: '/api',
+});
+
+const authRouter = require('./src/auth/router');
+
+router.use(authRouter.routes());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
