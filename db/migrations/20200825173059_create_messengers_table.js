@@ -3,7 +3,7 @@
 exports.up = function(knex) {
   return knex.schema
     .createTable('messengers', table => {
-      table.increments('id').primary();
+      table.increments('id').unsigned().primary();
       table.enu('messenger', [
         'Telegram',
         'Viber',

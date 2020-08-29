@@ -2,7 +2,7 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable('forms', table => {
-    table.increments('id').primary();
+    table.increments('id').unsigned().primary();
     table.string('name').notNullable();
     table.string('surname').notNullable();
     table.date('born').notNullable();

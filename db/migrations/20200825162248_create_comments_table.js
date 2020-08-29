@@ -2,7 +2,7 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable('comments', table => {
-    table.increments('id').primary();
+    table.increments('id').unsigned().primary();
     table.string('comment').notNullable();
     table.integer('userid').unsigned().references('users.id');
     table
