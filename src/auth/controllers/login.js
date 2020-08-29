@@ -1,6 +1,6 @@
 'use strict';
 
-const login = async(ctx) => {
+const login = async ctx => {
   try {
     throw new Error('wip');
   } catch (err) {

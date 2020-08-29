@@ -8,22 +8,22 @@ const user = (ctx, next) => {
   } = ctx.request.body;
 
   if (!username || !isLength(username, {
-      min: 2,
-      max: 128
-    })) {
+    min: 2,
+    max: 128
+  })) {
     return ctx.throw(400,
-      'Wrong username. Should be longer than 2 and shorter then 128')
+      'Wrong username. Should be longer than 2 and shorter then 128');
   }
 
   if (!password || !isLength(password, {
-      min: 6,
-      max: 128
-    })) {
+    min: 6,
+    max: 128
+  })) {
     return ctx.throw(400,
-      'Wrong password. Should be longer than 6 and shorter then 128')
+      'Wrong password. Should be longer than 6 and shorter then 128');
   }
   return next();
-}
+};
 
 module.exports = {
   user,

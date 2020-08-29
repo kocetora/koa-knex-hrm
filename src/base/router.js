@@ -4,12 +4,11 @@ const controllers = require('./controllers/index');
 const validators = require('./validators/index');
 
 const router = new Router({
-  prefix: '/auth',
+  prefix: '/base',
 });
 
 router
-  .post('/register', validators.user, controllers.register)
-  .post('/login', validators.user, controllers.login)
-  .get('/logout', controllers.logout);
+  .get('/api/forms', controllers.getForms)
+  .post('/api/forms', validators.filter, controllers.filterForms);
 
 module.exports = router;

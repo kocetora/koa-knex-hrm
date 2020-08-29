@@ -18,7 +18,7 @@ exports.up = function(knex) {
         .references('forms.id')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
-    })
+    });
 };
 
 exports.down = function(knex) {
