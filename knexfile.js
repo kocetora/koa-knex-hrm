@@ -1,12 +1,13 @@
 'use strict';
+
 module.exports = {
   development: {
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      user : 'postgres',
-      password : '30918',
-      database : 'form_manager'
+      host: '127.0.0.1',
+      user: 'postgres',
+      password: '30918',
+      database: 'form_manager'
     },
     migrations: {
       directory: __dirname + '/db/migrations',
