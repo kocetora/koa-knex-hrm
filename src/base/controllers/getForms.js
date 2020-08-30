@@ -1,9 +1,10 @@
-'use strict';
-const knex = require('../../db/knex');
+const Services = require('../services/index');
 
-const getForms = () => knex('forms')
-  .select('*');
-
-module.exports = {
-  getForms
-};
+const getForms = async(ctx) => {
+  try {
+    ctx.body = await Services.getForms(ctx.request.body);
+    return ctx;
+  } catch (error) {
+    return ctx.throw(400, error);
+  }
+}
