@@ -1,16 +1,17 @@
 'use strict';
 const queries = require('../queries/index');
 
-const deleteForms = async ({
+const deleteForm = async(
   formid
-}) => {
-  const [form] = await queries.getFormById(formid);
+) => {
+  console.log(formid)
+  const [form] = await queries.getForm(formid);
   if (!form) {
     throw new Error('Form with this id doesn\'t exists');
   }
-  await queries.deleteForms(formid);
+  await queries.deleteForm(formid);
 };
 
 module.exports = {
-  deleteForms,
+  deleteForm,
 };

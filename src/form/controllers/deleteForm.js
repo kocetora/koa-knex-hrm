@@ -3,7 +3,8 @@ const Services = require('../services/index');
 
 const deleteForm = async ctx => {
   try {
-    await Services.deleteForm(ctx.request.body);
+    const formid = ctx.params.formid;
+    await Services.deleteForm(formid);
     ctx.body = {
       status: true,
       message: 'Form successfully deleted'
