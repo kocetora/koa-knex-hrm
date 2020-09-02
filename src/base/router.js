@@ -8,7 +8,7 @@ const router = new Router({
 });
 
 router
-  .get('/api/forms', controllers.getForms)
-  .post('/api/forms', validators.filter, controllers.filterForms);
+  .get('/', controllers.getForms)
+  .post('/', validators.filter, controllers.filterForms);
 
 module.exports = router;
