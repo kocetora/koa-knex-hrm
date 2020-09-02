@@ -2,7 +2,7 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable('forms', table => {
-    table.increments('id').unsigned().primary();
+    table.increments('id').primary();
     table.string('name').notNullable();
     table.string('surname').notNullable();
     table.date('born').notNullable();
@@ -17,8 +17,8 @@ exports.up = function(knex) {
       'primary',
       'secondary',
       'unfinished_higher',
-      'higher'],
-    { useNative: true, enumName: 'education_grade' }).notNullable();
+      'higher'
+    ], { useNative: true, enumName: 'education_grade' }).notNullable();
     table.integer('expectedSalary').notNullable();
     table.integer('workExperience').notNullable();
     table.integer('unemployedFor').notNullable();
