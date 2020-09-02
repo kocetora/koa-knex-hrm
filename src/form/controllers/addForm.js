@@ -1,7 +1,7 @@
 'use strict';
 const Services = require('../services/index');
 
-const addForm = async(ctx) => {
+const addForm = async ctx => {
   try {
     ctx.body = await Services.addForm(ctx.request.body);
     // ctx.body = {

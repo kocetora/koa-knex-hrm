@@ -1,7 +1,7 @@
 'use strict';
 const queries = require('../queries/index');
 
-const addForm = async({
+const addForm = async ({
   name,
   surname,
   born,
@@ -46,7 +46,7 @@ const addForm = async({
     id,
     languageSkills
   );
-  const [form] = await queries.getForm(id)
+  const [form] = await queries.getForm(id);
   console.log(form);
   return form;
 };
