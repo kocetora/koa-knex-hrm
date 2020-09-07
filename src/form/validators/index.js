@@ -1,6 +1,12 @@
 'use strict';
-const { user } = require('./user');
+const { formid } = require('./formid');
+const { userid } = require('./userid');
+const { form } = require('./form');
+const { comment } = require('./comment');
 
 module.exports = {
-  user,
+  formid,
+  userid,
+  form,
+  comment,
 };
