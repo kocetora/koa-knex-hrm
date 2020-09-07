@@ -47,7 +47,6 @@ const addForm = async ({
     languageSkills
   );
   const [form] = await queries.getForm(id);
-  console.log(form);
   return form;
 };
 
