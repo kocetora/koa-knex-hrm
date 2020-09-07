@@ -1,8 +1,9 @@
 'use strict';
 const knex = require('../../db/knex');
 
-const getComments = () => knex('comments')
-  .select('*');
+const getComments = formid => knex('comments')
+  .where({ formid })
+  .select();
 
 module.exports = {
   getComments

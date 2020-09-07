@@ -1,9 +1,9 @@
 'use strict';
 const Services = require('../services/index');
 
-const getComment = async ctx => {
+const getComments = async ctx => {
   try {
-    ctx.body = await Services.getComment(ctx.request.body);
+    ctx.body = await Services.getComments(ctx.params.formid);
     return ctx;
   } catch (error) {
     return ctx.throw(400, error);
@@ -11,5 +11,5 @@ const getComment = async ctx => {
 };
 
 module.exports = {
-  getComment,
+  getComments,
 };
