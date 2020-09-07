@@ -46,8 +46,8 @@ const addForm = async ({
     id,
     languageSkills
   );
-  const [form] = await queries.getForm(id);
-  return form;
+  const result = await queries.getForm(id);
+  return result;
 };
 
 module.exports = {
