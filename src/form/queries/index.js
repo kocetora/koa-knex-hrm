@@ -8,6 +8,7 @@ const { deleteForm } = require('./deleteForm');
 const { getComments } = require('./getComments');
 const { updateForm } = require('./updateForm');
 const { getForm } = require('./getForm');
+const { getUser } = require('./getUser');
 
 module.exports = {
   addComment,
@@ -19,4 +20,5 @@ module.exports = {
   addProfessions,
   addLanguageSkills,
   addMessengers,
+  getUser,
 };
