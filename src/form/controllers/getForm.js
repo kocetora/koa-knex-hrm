@@ -3,7 +3,8 @@ const Services = require('../services/index');
 
 const getForm = async ctx => {
   try {
-    ctx.body = await Services.getForm(ctx.request.body);
+    const formid = ctx.params.formid;
+    ctx.body = await Services.getForm(formid);
     return ctx;
   } catch (error) {
     return ctx.throw(400, error);
