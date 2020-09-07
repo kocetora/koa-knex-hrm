@@ -8,11 +8,27 @@ const router = new Router({
 });
 
 router
-  .post('/api/form', validators.form, controllers.addForm)
-  .put('/api/form/:formid', validators.form, controllers.updateForm)
-  .get('/api/form/:formid', controllers.getForm)
-  .delete('/api/form/:formid', controllers.deleteForm)
-  .post('/api/form/:formid/comment', validators.comment, controllers.addComment)
-  .get('/api/form/:formid/comment', controllers.getComments);
+  .post('/',
+    validators.form,
+    controllers.addForm)
+  .put('/:formid',
+    validators.form,
+    validators.formid,
+    controllers.updateForm)
+  .get('/:formid',
+    validators.formid,
+    controllers.getForm)
+  .delete('/:formid',
+    validators.formid,
+    controllers.deleteForm)
+  .post('/:formid/comment',
+    validators.formid,
+    validators.userid,
+    validators.comment,
+    controllers.addComment)
+  .get('/:formid/comment',
+    validators.formid,
+    validators.userid,
+    controllers.getComments);
 
 module.exports = router;
