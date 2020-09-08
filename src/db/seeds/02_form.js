@@ -31,7 +31,7 @@ const languageSkills = [
 function createForm(knex) {
   return knex('forms').del()
     .then(() => knex('forms')
-      .insert({ ...form })
+      .insert({...form })
       .returning('id'))
     .then(async formid => {
       await createMessengers(knex, ...formid);
@@ -43,30 +43,30 @@ function createForm(knex) {
 
 function createMessengers(knex, formid) {
   return knex('messengers').del()
-    .then(() => {
-      messengers.forEach(async el => {
+    .then(async() => {
+      for (const el of messengers) {
         await knex('messengers').insert({ formid, ...el });
-      });
+      };
     })
     .catch(err => console.log('Seeding createMessengers error:' + err));
 }
 
 function createProfessions(knex, formid) {
   return knex('professions').del()
-    .then(() => {
-      professions.forEach(async el => {
+    .then(async() => {
+      for (const el of professions) {
         await knex('professions').insert({ formid, ...el });
-      });
+      };
     })
     .catch(err => console.log('Seeding createProfessions error:' + err));
 }
 
 function createLanguageSkills(knex, formid) {
   return knex('languageSkills').del()
-    .then(() => {
-      languageSkills.forEach(async el => {
+    .then(async() => {
+      for (const el of languageSkills) {
         await knex('languageSkills').insert({ formid, ...el });
-      });
+      };
     })
     .catch(err => console.log('Seeding createLanguageSkille error:' + err));
 }
