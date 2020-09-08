@@ -11,6 +11,9 @@ const { updateProfessions } = require('./updateForm');
 const { updateMessengers } = require('./updateForm');
 const { updateLanguageSkills } = require('./updateForm');
 const { getForm } = require('./getForm');
+const { getProfessions } = require('./getForm');
+const { getMessengers } = require('./getForm');
+const { getLanguageSkills } = require('./getForm');
 const { getUser } = require('./getUser');
 
 module.exports = {
@@ -23,6 +26,9 @@ module.exports = {
   getComments,
   deleteForm,
   getForm,
+  getProfessions,
+  getLanguageSkills,
+  getMessengers,
   addProfessions,
   addLanguageSkills,
   addMessengers,
