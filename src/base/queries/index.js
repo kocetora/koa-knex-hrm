@@ -1,8 +1,14 @@
 'use strict';
-const { getAllForms } = require('./getAllForms');
-const { getSomeForms } = require('./getSomeForms');
+const { getForms } = require('./getForms');
+const { getProfessions } = require('./getForms');
+const { getLanguageSkills } = require('./getForms');
+const { getMessengers } = require('./getForms');
+const { filterForms } = require('./filterForms');
 
 module.exports = {
-  getAllForms,
-  getSomeForms,
+  getForms,
+  getProfessions,
+  getLanguageSkills,
+  getMessengers,
+  filterForms,
 };
