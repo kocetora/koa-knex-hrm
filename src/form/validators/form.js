@@ -60,7 +60,8 @@ const form = (ctx, next) => {
     'higher'
   ])) {
     return ctx.throw(400,
-      'Incorrect education. May be primary, secondary, unfinished_higher or higher only');
+      'Incorrect education. May be primary, secondary,' +
+      ' unfinished_higher or higher only');
   }
   if (!sex || !isIn(sex, [
     'male',
@@ -88,28 +89,32 @@ const form = (ctx, next) => {
     max: 2147483647
   })) {
     return ctx.throw(400,
-      'Incorrect expectedSalary. Should be bigger than 1 and less then 2147483647');
+      'Incorrect expectedSalary. Should be bigger than' +
+      ' 1 and less then 2147483647');
   }
   if (!workExperience || !isInt(workExperience.toString(), {
-    min: 1,
-    max: 2147483647
+    min: 0,
+    max: 1211
   })) {
     return ctx.throw(400,
-      'Incorrect workExperience. Should be bigger than 1 and less then 2147483647');
+      'Incorrect workExperience. Should be bigger than' +
+      ' 1 and less then 2147483647');
   }
   if (!unemployedFor || !isInt(unemployedFor.toString(), {
-    min: 1,
-    max: 2147483647
+    min: 0,
+    max: 1211
   })) {
     return ctx.throw(400,
-      'Incorrect unemployedFor. Should be bigger than 1 and less then 2147483647');
+      'Incorrect unemployedFor. Should be bigger than 1' +
+      ' and less then 2147483647');
   }
   if (prefferedRegion !== undefined && !isLength(prefferedRegion, {
     min: 1,
     max: 128
   })) {
     return ctx.throw(400,
-      'Incorrect prefferedRegion. Should be longer than 1 and shorter then 128');
+      'Incorrect prefferedRegion. Should be longer than' +
+      ' 1 and shorter then 128');
   }
   languageSkills.forEach(el => {
     if (!el.language || !isIn(el.language, [
@@ -126,7 +131,8 @@ const form = (ctx, next) => {
       'basic'
     ])) {
       return ctx.throw(400,
-        'Incorrect languageProficiency. May be russian or native, fluent, intermediate or basic only');
+        'Incorrect languageProficiency. May be russian or ' +
+        'native, fluent, intermediate or basic only');
     }
   });
   professions.forEach(el => {
@@ -140,7 +146,8 @@ const form = (ctx, next) => {
       'barman',
     ])) {
       return ctx.throw(400,
-        'Incorrect profession. May be trainee, dealer, inspector, manager, pit_boss, waiter or barman only');
+        'Incorrect profession. May be trainee, dealer, inspector,' +
+        ' manager, pit_boss, waiter or barman only');
     }
   });
   messengers.forEach(el => {
