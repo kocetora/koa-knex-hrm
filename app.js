@@ -1,5 +1,6 @@
 'use strict';
 const Koa = require('koa');
+const passport = require('koa-passport');
 const Router = require('koa-router');
 const cors = require('@koa/cors');
 const bodyParser = require('koa-bodyparser');
@@ -19,6 +20,8 @@ const baseRouter = require('./src/base/router');
 router.use(authRouter.routes());
 router.use(formRouter.routes());
 router.use(baseRouter.routes());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
