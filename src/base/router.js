@@ -9,6 +9,6 @@ const router = new Router({
 
 router
   .get('/', controllers.getForms)
-  .post('/', validators.filter, controllers.filterForms);
+  .post('/', validators.filter);
 
 module.exports = router;
