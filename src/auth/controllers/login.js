@@ -1,6 +1,6 @@
 'use strict';
 
-const login = async ctx => {
+const login = async (ctx) => {
   try {
     throw new Error('wip');
   } catch (err) {
@@ -9,5 +9,5 @@ const login = async ctx => {
 };
 
 module.exports = {
-  login
+  login,
 };
