@@ -4,5 +4,5 @@ const { getUser } = require('./getUser');
 
 module.exports = {
   addUser,
-  getUser
+  getUser,
 };

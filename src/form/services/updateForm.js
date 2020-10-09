@@ -2,7 +2,8 @@
 const queries = require('../queries/index');
 
 const updateForm = async (
-  formid, {
+  formid,
+  {
     name,
     surname,
     born,
@@ -18,12 +19,12 @@ const updateForm = async (
     note,
     messengers,
     professions,
-    languageSkills
+    languageSkills,
   }
 ) => {
   const [form] = await queries.getForm(formid);
   if (!form) {
-    throw new Error('Form with this id doesn\'t exists');
+    throw new Error("Form with this id doesn't exists");
   }
   await queries.updateForm(formid, {
     name,
@@ -41,24 +42,14 @@ const updateForm = async (
     note,
   });
   try {
-    await queries.updateProfessions(
-      formid,
-      professions
-    );
-    await queries.updateMessengers(
-      formid,
-      messengers
-    );
-    await queries.updateLanguageSkills(
-      formid,
-      languageSkills
-    );
+    await queries.updateProfessions(formid, professions);
+    await queries.updateMessengers(formid, messengers);
+    await queries.updateLanguageSkills(formid, languageSkills);
     const result = await queries.getForm(formid);
     return result;
   } catch (err) {
     console.log(err);
   }
-
 };
 
 module.exports = {
