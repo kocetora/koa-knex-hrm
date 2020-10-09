@@ -31,6 +31,7 @@
   },
   "scripts": {
     "start": "nodemon app.js",
+    "build": "node app.js",
     "lint": "eslint --fix *.js && eslint --fix **/*.js && eslint --fix **/**/*.js",
     "prettier": "prettier --write .",
     "test": "mocha --exit --recursive --timeout 30000 src/**/*.test.js"
