@@ -32,7 +32,8 @@
   "scripts": {
     "start": "nodemon app.js",
     "lint": "eslint --fix *.js && eslint --fix **/*.js && eslint --fix **/**/*.js",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "test": "mocha --exit --recursive --timeout 30000 src/**/*.test.js"
   },
   "author": "kocetora",
   "license": "ISC"
