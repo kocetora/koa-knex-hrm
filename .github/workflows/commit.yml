@@ -16,4 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Check commits
-        uses: agenthunt/conventional-commit-checker-action@v1.0.0
+        uses: TriPSs/conventional-changelog-action@v3
+        with: 
+          github-token: ${{ secrets.github_token }}
