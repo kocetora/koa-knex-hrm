@@ -18,16 +18,21 @@
     "validator": "^13.1.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "chai-match-pattern": "^1.2.0",
     "eslint": "^7.7.0",
+    "husky": "^4.3.0",
     "mocha": "^8.1.2",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "prettier": "2.1.2"
   },
   "scripts": {
     "start": "nodemon app.js",
-    "lint": "eslint --fix *.js && eslint --fix **/*.js && eslint --fix **/**/*.js"
+    "lint": "eslint --fix *.js && eslint --fix **/*.js && eslint --fix **/**/*.js",
+    "prettier": "prettier --write ."
   },
   "author": "kocetora",
   "license": "ISC"
