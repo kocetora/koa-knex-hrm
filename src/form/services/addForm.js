@@ -17,7 +17,7 @@ const addForm = async ({
   note,
   messengers,
   professions,
-  languageSkills
+  languageSkills,
 }) => {
   const [id] = await queries.addForm({
     name,
@@ -34,18 +34,9 @@ const addForm = async ({
     unemployedFor,
     note,
   });
-  await queries.addProfessions(
-    id,
-    professions
-  );
-  await queries.addMessengers(
-    id,
-    messengers
-  );
-  await queries.addLanguageSkills(
-    id,
-    languageSkills
-  );
+  await queries.addProfessions(id, professions);
+  await queries.addMessengers(id, messengers);
+  await queries.addLanguageSkills(id, languageSkills);
   const result = await queries.getForm(id);
   return result;
 };

@@ -1,12 +1,15 @@
 'use strict';
 const knex = require('../../db/knex');
 
-const updateForm = (formid, form) => knex('forms')
-  .where({ id: formid })
-  .update({ ...form });
+const updateForm = (formid, form) =>
+  knex('forms')
+    .where({ id: formid })
+    .update({ ...form });
 
 const updateProfessions = (formid, professions) =>
-  knex('professions').where({ formid }).del()
+  knex('professions')
+    .where({ formid })
+    .del()
     .then(async () => {
       for (const el of professions) {
         await knex('professions').insert({ formid, ...el });
@@ -14,7 +17,9 @@ const updateProfessions = (formid, professions) =>
     });
 
 const updateLanguageSkills = (formid, languageSkills) =>
-  knex('languageSkills').where({ formid }).del()
+  knex('languageSkills')
+    .where({ formid })
+    .del()
     .then(async () => {
       for (const el of languageSkills) {
         await knex('languageSkills').insert({ formid, ...el });
@@ -22,13 +27,14 @@ const updateLanguageSkills = (formid, languageSkills) =>
     });
 
 const updateMessengers = (formid, messengers) =>
-  knex('messengers').where({ formid }).del()
+  knex('messengers')
+    .where({ formid })
+    .del()
     .then(async () => {
       for (const el of messengers) {
         await knex('messengers').insert({ formid, ...el });
       }
     });
-
 
 module.exports = {
   updateForm,
