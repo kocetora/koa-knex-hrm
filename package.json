@@ -1,6 +1,6 @@
 {
   "name": "koa-knex-hrm",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "HRM backend using koa and knex",
   "main": "app.js",
   "dependencies": {
