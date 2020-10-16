@@ -3,6 +3,9 @@ name: Lint
 on:
   push:
     branches: [heroku, master]
+  pull_request:
+    branches: [master]
+    types: [opened, edited]
 
 jobs:
   run-linters:
