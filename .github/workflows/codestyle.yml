@@ -30,7 +30,7 @@ jobs:
           github_token: ${{ secrets.github_token }}
           commit_message: "fix: code style issues with ${linter}"
          # auto_fix: true
-          prettier_args: "write"
+          prettier_args: "--write"
           eslint_args: "--fix"
           eslint: true
           prettier: true
