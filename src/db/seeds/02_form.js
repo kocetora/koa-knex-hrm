@@ -33,12 +33,12 @@ function createForm(knex) {
         .insert({ ...form })
         .returning('id')
     )
-    .then(async formid => {
+    .then(async (formid) => {
       await createMessengers(knex, ...formid);
       await createProfessions(knex, ...formid);
       await createLanguageSkills(knex, ...formid);
     })
-    .catch(err => console.log('Seeding createForm error:' + err));
+    .catch((err) => console.log('Seeding createForm error:' + err));
 }
 
 function createMessengers(knex, formid) {
@@ -49,7 +49,7 @@ function createMessengers(knex, formid) {
         await knex('messengers').insert({ formid, ...el });
       }
     })
-    .catch(err => console.log('Seeding createMessengers error:' + err));
+    .catch((err) => console.log('Seeding createMessengers error:' + err));
 }
 
 function createProfessions(knex, formid) {
@@ -60,7 +60,7 @@ function createProfessions(knex, formid) {
         await knex('professions').insert({ formid, ...el });
       }
     })
-    .catch(err => console.log('Seeding createProfessions error:' + err));
+    .catch((err) => console.log('Seeding createProfessions error:' + err));
 }
 
 function createLanguageSkills(knex, formid) {
@@ -71,7 +71,7 @@ function createLanguageSkills(knex, formid) {
         await knex('languageSkills').insert({ formid, ...el });
       }
     })
-    .catch(err => console.log('Seeding createLanguageSkille error:' + err));
+    .catch((err) => console.log('Seeding createLanguageSkille error:' + err));
 }
 
 exports.seed = createForm;

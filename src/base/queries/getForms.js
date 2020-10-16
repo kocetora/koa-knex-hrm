@@ -3,15 +3,15 @@ const knex = require('../../db/knex');
 
 const getForms = () => knex('forms').select();
 
-const getProfessions = formid =>
+const getProfessions = (formid) =>
   knex('professions').where({ formid }).select('profession');
 
-const getLanguageSkills = formid =>
+const getLanguageSkills = (formid) =>
   knex('languageSkills')
     .where({ formid })
     .select('language', 'languageProficiency');
 
-const getMessengers = formid =>
+const getMessengers = (formid) =>
   knex('messengers').where({ formid }).select('messenger', 'info');
 
 module.exports = {
