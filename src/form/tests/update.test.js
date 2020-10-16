@@ -6,7 +6,7 @@ chai.use(chaiHttp);
 chai.use(chaiMatchPattern);
 
 describe('LOGIN', () => {
-  it('LOGIN CORRECT DATA 200', done => {
+  it('LOGIN CORRECT DATA 200', (done) => {
     chai
       .request('http://localhost:3000')
       .post('/login')
