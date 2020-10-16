@@ -1,7 +1,7 @@
 'use strict';
 
-exports.up = function (knex) {
-  return knex.schema.createTable('languageSkills', (table) => {
+exports.up = function(knex) {
+  return knex.schema.createTable('languageSkills', table => {
     table.increments('id').unsigned().primary();
     table
       .enu('language', ['english', 'russian'], {
@@ -25,7 +25,7 @@ exports.up = function (knex) {
   });
 };
 
-exports.down = function (knex) {
+exports.down = function(knex) {
   return knex.schema
     .dropTable('languageSkills')
     .raw('DROP TYPE language, language_proficiency');
