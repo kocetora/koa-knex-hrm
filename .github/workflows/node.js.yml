@@ -25,10 +25,12 @@ jobs:
       run: |
         npm install
         npm test
-   # - name: Prettier
-   #   run: npm run prettier
-   # unclear problem with eslint
-   # - name: Prettier
-   #   run: npm run prettier
+    - name: Prettier
+      run: npm run prettier
+    - name: Eslint
+      uses: getsentry/action-eslint-fix@v1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        dry: true
       env:
         CI: true
