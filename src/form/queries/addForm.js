@@ -1,7 +1,7 @@
 'use strict';
 const knex = require('../../db/knex');
 
-const addForm = (form) =>
+const addForm = form =>
   knex('forms')
     .insert({ ...form })
     .returning('id');

@@ -1,7 +1,7 @@
 'use strict';
 const Services = require('../services/index');
 
-const register = async (ctx) => {
+const register = async ctx => {
   try {
     await Services.register(ctx.request.body);
     ctx.body = {
