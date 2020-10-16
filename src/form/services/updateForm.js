@@ -24,7 +24,7 @@ const updateForm = async (
 ) => {
   const [form] = await queries.getForm(formid);
   if (!form) {
-    throw new Error('Form with this id doesn\'t exists');
+    throw new Error("Form with this id doesn't exists");
   }
   await queries.updateForm(formid, {
     name,
