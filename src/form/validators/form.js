@@ -158,7 +158,7 @@ const form = (ctx, next) => {
         ' 1 and shorter then 128'
     );
   }
-  languageSkills.forEach(el => {
+  languageSkills.forEach((el) => {
     if (!el.language || !isIn(el.language, ['russian', 'english'])) {
       return ctx.throw(
         400,
@@ -181,7 +181,7 @@ const form = (ctx, next) => {
       );
     }
   });
-  professions.forEach(el => {
+  professions.forEach((el) => {
     if (
       !el.profession ||
       !isIn(el.profession, [
@@ -201,7 +201,7 @@ const form = (ctx, next) => {
       );
     }
   });
-  messengers.forEach(el => {
+  messengers.forEach((el) => {
     if (
       !el.messenger ||
       !isIn(el.messenger, ['Telegram', 'Viber', 'WhatsApp'])
