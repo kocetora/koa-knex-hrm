@@ -1,7 +1,7 @@
 'use strict';
 
-exports.up = function (knex) {
-  return knex.schema.createTable('professions', (table) => {
+exports.up = function(knex) {
+  return knex.schema.createTable('professions', table => {
     table.increments('id').unsigned().primary();
     table
       .enu(
@@ -27,6 +27,6 @@ exports.up = function (knex) {
   });
 };
 
-exports.down = function (knex) {
+exports.down = function(knex) {
   return knex.schema.dropTable('professions').raw('DROP TYPE profession');
 };
