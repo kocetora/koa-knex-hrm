@@ -17,7 +17,7 @@ const filter = async (ctx, next) => {
     submitted,
   } = ctx.request.body;
 
-  expectedSalary.forEach((el) => {
+  expectedSalary.forEach(el => {
     if (
       !el ||
       !isInt(el.toString(), {
@@ -50,7 +50,7 @@ const filter = async (ctx, next) => {
     );
   }
 
-  workExperience.forEach((el) => {
+  workExperience.forEach(el => {
     if (
       !el ||
       !isInt(el.toString(), {
@@ -66,7 +66,7 @@ const filter = async (ctx, next) => {
     }
   });
 
-  height.forEach((el) => {
+  height.forEach(el => {
     if (
       !el ||
       !isInt(el.toString(), {
@@ -81,7 +81,7 @@ const filter = async (ctx, next) => {
     }
   });
 
-  age.forEach((el) => {
+  age.forEach(el => {
     if (
       !el ||
       !isInt(el.toString(), {
@@ -111,7 +111,7 @@ const filter = async (ctx, next) => {
     );
   }
 
-  professions.forEach((el) => {
+  professions.forEach(el => {
     if (
       !el.profession ||
       !isIn(el.profession, [
@@ -132,7 +132,7 @@ const filter = async (ctx, next) => {
     }
   });
 
-  languageSkills.forEach((el) => {
+  languageSkills.forEach(el => {
     if (!el.language || !isIn(el.language, ['russian', 'english'])) {
       return ctx.throw(
         400,
@@ -156,7 +156,7 @@ const filter = async (ctx, next) => {
     }
   });
 
-  messengers.forEach((el) => {
+  messengers.forEach(el => {
     if (
       !el.messenger ||
       !isIn(el.messenger, ['Telegram', 'Viber', 'WhatsApp'])
