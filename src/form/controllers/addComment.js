@@ -1,7 +1,7 @@
 'use strict';
 const Services = require('../services/index');
 
-const addComment = async ctx => {
+const addComment = async (ctx) => {
   try {
     const formid = ctx.params.formid;
     const body = ctx.request.body;
