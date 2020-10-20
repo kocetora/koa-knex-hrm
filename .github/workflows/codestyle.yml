@@ -2,7 +2,6 @@ name: Lint
 
 on:
   push:
-    branches: [heroku, master]
   pull_request:
     branches: [master]
     types: [opened, edited]
@@ -28,10 +27,9 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           github_token: ${{ secrets.github_token }}
-          commit_message: "fix: code style issues with ${linter}"
-         # auto_fix: true
-          prettier_args: "--write"
-          eslint_args: "--fix"
+          commit_message: 'fix: code style issues with ${linter}'
+          eslint_args: '--fix'
           eslint: true
+          prettier_args: '--write'
           prettier: true
           prettier_extensions: js,json,ts

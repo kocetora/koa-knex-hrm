@@ -2,7 +2,6 @@ name: Conventional commits
 
 on:
   push:
-    branches: [heroku, master]
   pull_request:
     branches: [master]
     types: [opened, edited]
@@ -14,5 +13,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Check commits
         uses: TriPSs/conventional-changelog-action@v3
-        with: 
+        with:
           github-token: ${{ secrets.github_token }}
