@@ -10,7 +10,7 @@ const app = new Koa();
 app.use(cors());
 app.use(bodyParser());
 const router = new Router({
-  prefix: '/api',
+  prefix: '/v1',
 });
 
 const authRouter = require('./src/auth/router');
