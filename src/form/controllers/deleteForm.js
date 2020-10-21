@@ -1,17 +1,14 @@
 'use strict';
 const Services = require('../services/index');
 
-const deleteForm = async (ctx) => {
+const deleteForm = async(ctx) => {
   try {
     const formid = ctx.params.formid;
     await Services.deleteForm(formid);
-    ctx.body = {
-      status: true,
-      message: 'Form successfully deleted',
-    };
+    ctx.body = "Request processed successfully";
     return ctx;
-  } catch (error) {
-    return ctx.throw(400, error);
+  } catch (err) {
+    return ctx.throw(err.code, err.message);
   }
 };
 

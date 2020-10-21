@@ -1,9 +1,8 @@
 'use strict';
 const queries = require('../queries/index');
 
-const updateForm = async (
-  formid,
-  {
+const updateForm = async(
+  formid, {
     name,
     surname,
     born,
@@ -24,7 +23,9 @@ const updateForm = async (
 ) => {
   const [form] = await queries.getForm(formid);
   if (!form) {
-    throw new Error("Form with this id doesn't exists");
+    const error = new Error("Form with this id doesn't exists");
+    error.code = 404;
+    throw error;
   }
   await queries.updateForm(formid, {
     name,
