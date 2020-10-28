@@ -3,6 +3,13 @@
   "version": "1.1.0",
   "description": "HRM backend using koa and knex",
   "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "lint": "eslint --fix *.js && eslint --fix **/*.js && eslint --fix **/**/*.js",
+    "prettier": "prettier --write .",
+    "style": "npm run lint && npm run prettier",
+    "test": "nyc mocha --exit --recursive --timeout 50000 src/**/*.test.js && mocha --exit --recursive --timeout 20000 src/**/**/*.test.js"
+  },
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "bcrypt-nodejs": "0.0.3",
@@ -27,14 +34,8 @@
     "husky": "^4.3.0",
     "mocha": "^8.1.2",
     "nodemon": "^2.0.4",
+    "nyc": "^15.1.0",
     "prettier": "2.1.2"
-  },
-  "scripts": {
-    "start": "nodemon app.js",
-    "lint": "eslint --fix *.js && eslint --fix **/*.js && eslint --fix **/**/*.js",
-    "prettier": "prettier --write .",
-    "style": "npm run lint && npm run prettier",
-    "test": "mocha --exit --recursive --timeout 50000 src/**/*.test.js && mocha --exit --recursive --timeout 20000 src/**/**/*.test.js"
   },
   "author": "kocetora",
   "license": "ISC"
