@@ -1,6 +1,6 @@
 'use strict';
 
-exports.up = function(knex) {
+exports.up = function (knex) {
   return knex.schema.createTable('comments', (table) => {
     table.increments('id').unsigned().primary();
     table.string('comment').notNullable();
@@ -15,6 +15,6 @@ exports.up = function(knex) {
   });
 };
 
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex.schema.dropTable('comments');
 };

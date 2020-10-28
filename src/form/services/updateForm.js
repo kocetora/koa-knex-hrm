@@ -1,8 +1,9 @@
 'use strict';
 const queries = require('../queries/index');
 
-const updateForm = async(
-  formid, {
+const updateForm = async (
+  formid,
+  {
     name,
     surname,
     born,
