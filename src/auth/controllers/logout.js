@@ -1,10 +1,10 @@
 'use strict';
 
-const logout = async(ctx) => {
+const logout = async (ctx) => {
   try {
     // TODO: jwt and session
     ctx.logout();
-    ctx.body = "Request processed successfully";
+    ctx.body = 'Request processed successfully';
   } catch (err) {
     ctx.throw(400, err);
   }
