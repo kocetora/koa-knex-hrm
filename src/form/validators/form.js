@@ -208,7 +208,7 @@ const form = (ctx, next) => {
     ) {
       return ctx.throw(
         400,
-        'Incorrect messenger. May be russian or english only'
+        'Incorrect messenger. May be Telegram, Viber or WhatsApp only'
       );
     }
     if (

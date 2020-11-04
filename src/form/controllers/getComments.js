@@ -5,8 +5,8 @@ const getComments = async (ctx) => {
   try {
     ctx.body = await Services.getComments(ctx.params.formid);
     return ctx;
-  } catch (error) {
-    return ctx.throw(400, error);
+  } catch (err) {
+    return ctx.throw(err.code, err.message);
   }
 };
 

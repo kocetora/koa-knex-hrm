@@ -4,9 +4,16 @@ const Services = require('../services/index');
 const register = async (ctx) => {
   try {
     await Services.register(ctx.request.body);
-    ctx.body = 'Request processed successfully';
+    ctx.body = {
+      success: true,
+      message: 'User successfully registered',
+    };
   } catch (err) {
-    return ctx.throw(err.code, err.message);
+    ctx.status = err.code;
+    ctx.body = {
+      success: false,
+      message: err.message,
+    };
   }
 };
 
