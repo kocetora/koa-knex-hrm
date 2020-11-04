@@ -23,11 +23,6 @@ jobs:
       - name: Install, build, test
         run: |
           npm install
-          npm test
-        #  - name: Prettier
-        #    run: npm run prettier
-        # Unclear ploblem with eslint
-        #  - name: Eslint
-        #    run: npm run eslint
+         # npm test
         env:
           CI: true
