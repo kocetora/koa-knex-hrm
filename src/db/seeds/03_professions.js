@@ -13,7 +13,7 @@ function createProfessions(knex) {
         await knex('professions').insert({ ...el });
       }
     })
-    .catch((err) => console.log('Seeding createProfessions error:' + err));
+    .catch(err => console.log('Seeding createProfessions error:' + err));
 }
 
 exports.seed = createProfessions;

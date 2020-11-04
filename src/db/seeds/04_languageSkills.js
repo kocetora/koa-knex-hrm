@@ -13,7 +13,7 @@ function createLanguageSkills(knex) {
         await knex('languageSkills').insert({ ...el });
       }
     })
-    .catch((err) => console.log('Seeding createLanguageSkille error:' + err));
+    .catch(err => console.log('Seeding createLanguageSkille error:' + err));
 }
 
 exports.seed = createLanguageSkills;

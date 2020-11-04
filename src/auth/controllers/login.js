@@ -1,6 +1,6 @@
 'use strict';
 
-const login = async (ctx) => {
+const login = async ctx => {
   try {
     // TODO: jwt and session
     ctx.body = JSON.stringify({

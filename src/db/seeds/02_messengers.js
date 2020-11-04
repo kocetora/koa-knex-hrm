@@ -13,7 +13,7 @@ function createMessengers(knex) {
         await knex('messengers').insert({ ...el });
       }
     })
-    .catch((err) => console.log('Seeding createMessengers error:' + err));
+    .catch(err => console.log('Seeding createMessengers error:' + err));
 }
 
 exports.seed = createMessengers;

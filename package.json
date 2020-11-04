@@ -7,7 +7,7 @@
     "start": "nodemon app.js",
     "lint": "eslint --fix *.js && eslint --fix **/*.js && eslint --fix **/**/*.js",
     "prettier": "prettier --write .",
-    "style": "npm run lint && npm run prettier",
+    "style": "npm run prettier && npm run lint",
     "test": "nyc mocha --exit --recursive --timeout 50000 src/**/*.test.js && mocha --exit --recursive --timeout 20000 src/**/**/*.test.js"
   },
   "dependencies": {

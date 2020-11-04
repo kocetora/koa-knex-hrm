@@ -21,7 +21,7 @@ function createForm(knex) {
   return knex('forms')
     .del()
     .then(() => knex('forms').insert({ ...form }))
-    .catch((err) => console.log('Seeding createForm error:' + err));
+    .catch(err => console.log('Seeding createForm error:' + err));
 }
 
 exports.seed = createForm;

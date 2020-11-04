@@ -121,13 +121,13 @@ const incorrectFormEmail = {
 };
 
 describe('POST FORM', () => {
-  before((done) => {
+  before(done => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
       .then(() => done());
   });
-  it('200 successfully created form', (done) => {
+  it('200 successfully created form', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/')
@@ -139,7 +139,7 @@ describe('POST FORM', () => {
         done();
       });
   });
-  it('400 bad data form', (done) => {
+  it('400 bad data form', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/')
@@ -152,7 +152,7 @@ describe('POST FORM', () => {
         done();
       });
   });
-  it('400 bad data form', (done) => {
+  it('400 bad data form', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/')
@@ -165,7 +165,7 @@ describe('POST FORM', () => {
         done();
       });
   });
-  it('400 bad data form', (done) => {
+  it('400 bad data form', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/')
@@ -178,7 +178,7 @@ describe('POST FORM', () => {
         done();
       });
   });
-  it('400 bad data form', (done) => {
+  it('400 bad data form', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/')

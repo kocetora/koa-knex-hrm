@@ -24,7 +24,7 @@ const updateForm = async (
 ) => {
   const [form] = await queries.getForm(formid);
   if (!form) {
-    const error = new Error("Form with this id doesn't exists");
+    const error = new Error('Form with this id doesn\'t exists');
     error.code = 404;
     throw error;
   }
