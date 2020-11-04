@@ -18,8 +18,8 @@ describe('GET COMMENT', () => {
   });
   it('200 successfully got comment', (done) => {
     chai
-      .request('http://localhost:3000')
-      .get('/v1/form/2147483646/comment')
+      .request('http://localhost:3000/v1')
+      .get('/form/2147483646/comment')
       .type('form')
       .set('content-type', 'application/json')
       .send()
@@ -31,8 +31,8 @@ describe('GET COMMENT', () => {
   });
   it('404 form not found', (done) => {
     chai
-      .request('http://localhost:3000')
-      .get('/v1/form/78423/comment')
+      .request('http://localhost:3000/v1')
+      .get('/form/78423/comment')
       .type('form')
       .set('content-type', 'application/json')
       .send()

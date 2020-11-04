@@ -32,7 +32,95 @@ const form = {
   ],
 };
 
-describe('GET FORM', () => {
+const incorrectFormName = {
+  name: 'n',
+  surname: 'name',
+  sex: 'male',
+  born: '2002-05-05',
+  height: 130,
+  phoneNumber: '235438',
+  email: 'klds4lv@nvd.com',
+  education: 'primary',
+  expectedSalary: 6885,
+  prefferedRegion: 'mldlv',
+  workExperience: 26,
+  unemployedFor: 11,
+  note: 'sdv',
+  professions: [{ profession: 'pit_boss' }],
+  messengers: [
+    { messenger: 'Viber', info: 'jsncdkns' },
+    { messenger: 'Telegram', info: 'pksjdvsk' },
+  ],
+  languageSkills: [{ language: 'russian', languageProficiency: 'native' }],
+};
+
+const incorrectFormSurname = {
+  name: 'nae',
+  surname: 'n',
+  sex: 'male',
+  born: '2002-05-05',
+  height: 130,
+  phoneNumber: '235438',
+  email: 'klds4lv@nvd.com',
+  education: 'primary',
+  expectedSalary: 6885,
+  prefferedRegion: 'mldlv',
+  workExperience: 26,
+  unemployedFor: 11,
+  note: 'sdv',
+  professions: [{ profession: 'pit_boss' }],
+  messengers: [
+    { messenger: 'Viber', info: 'jsncdkns' },
+    { messenger: 'Telegram', info: 'pldcmwwc' },
+  ],
+  languageSkills: [{ language: 'russian', languageProficiency: 'native' }],
+};
+
+const incorrectFormHeight = {
+  name: 'nae',
+  surname: 'name',
+  sex: 'male',
+  born: '2002-05-05',
+  height: 1,
+  phoneNumber: '235438',
+  email: 'klds4lv@nvd.com',
+  education: 'primary',
+  expectedSalary: 6885,
+  prefferedRegion: 'mldlv',
+  workExperience: 26,
+  unemployedFor: 11,
+  note: 'sdv',
+  professions: [{ profession: 'pit_boss' }],
+  messengers: [
+    { messenger: 'Viber', info: 'jsncdkns' },
+    { messenger: 'Telegram', info: 'pverveer' },
+  ],
+  languageSkills: [{ language: 'russian', languageProficiency: 'native' }],
+};
+
+const incorrectFormEmail = {
+  name: 'nae',
+  surname: 'name',
+  sex: 'male',
+  born: '2002-05-05',
+  height: 130,
+  phoneNumber: '235438',
+  email: 'klds4lv.com',
+  education: 'primary',
+  expectedSalary: 6885,
+  prefferedRegion: 'mldlv',
+  workExperience: 26,
+  unemployedFor: 11,
+  note: 'sdv',
+  professions: [{ profession: 'pit_boss' }],
+  messengers: [
+    { messenger: 'Viber', info: 'jsncdkns' },
+    { messenger: 'Telegram', info: 'sdkjncds' },
+  ],
+  languageSkills: [{ language: 'russian', languageProficiency: 'native' }],
+};
+
+describe('POST FORM', () => {
   before((done) => {
     knex.migrate
       .latest()
@@ -41,13 +129,65 @@ describe('GET FORM', () => {
   });
   it('200 successfully created form', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/v1/form/')
+      .request('http://localhost:3000/v1')
+      .post('/form/')
       .type('form')
       .set('content-type', 'application/json')
       .send(form)
       .end((error, res) => {
         expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it('400 bad data form', (done) => {
+    chai
+      .request('http://localhost:3000/v1')
+      .post('/form/')
+      .type('form')
+      .set('content-type', 'application/json')
+      .send(incorrectFormName)
+      .end((error, res) => {
+        console.log(error);
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+  it('400 bad data form', (done) => {
+    chai
+      .request('http://localhost:3000/v1')
+      .post('/form/')
+      .type('form')
+      .set('content-type', 'application/json')
+      .send(incorrectFormEmail)
+      .end((error, res) => {
+        console.log(error);
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+  it('400 bad data form', (done) => {
+    chai
+      .request('http://localhost:3000/v1')
+      .post('/form/')
+      .type('form')
+      .set('content-type', 'application/json')
+      .send(incorrectFormSurname)
+      .end((error, res) => {
+        console.log(error);
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+  it('400 bad data form', (done) => {
+    chai
+      .request('http://localhost:3000/v1')
+      .post('/form/')
+      .type('form')
+      .set('content-type', 'application/json')
+      .send(incorrectFormHeight)
+      .end((error, res) => {
+        console.log(error);
+        expect(res).to.have.status(400);
         done();
       });
   });

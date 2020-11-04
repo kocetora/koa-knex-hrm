@@ -45,7 +45,7 @@ const incorrectForm = {
   unemployedFor: 11,
   note: 'sdv',
   professions: [{ profession: 'pit_boss' }],
-  messengers: [{ messenger: 'Telegram', info: 'p'.repeat(129) }],
+  messengers: [{ messenger: 'Tele', info: 'kdnsc' }],
   languageSkills: [{ language: 'russian', languageProficiency: 'native' }],
 };
 
@@ -58,8 +58,8 @@ describe('UPDATE FORM', () => {
   });
   it('200 successfully updated form', (done) => {
     chai
-      .request('http://localhost:3000')
-      .put('/v1/form/2147483646')
+      .request('http://localhost:3000/v1')
+      .put('/form/2147483646')
       .type('form')
       .set('content-type', 'application/json')
       .send(form)
@@ -70,8 +70,8 @@ describe('UPDATE FORM', () => {
   });
   it('404 not found form', (done) => {
     chai
-      .request('http://localhost:3000')
-      .put('/v1/form/9432844')
+      .request('http://localhost:3000/v1')
+      .put('/form/9432844')
       .type('form')
       .set('content-type', 'application/json')
       .send(form)
@@ -82,8 +82,8 @@ describe('UPDATE FORM', () => {
   });
   it('400 bad data form', (done) => {
     chai
-      .request('http://localhost:3000')
-      .put('/v1/form/9432844')
+      .request('http://localhost:3000/v1')
+      .put('/form/9432844')
       .type('form')
       .set('content-type', 'application/json')
       .send(incorrectForm)

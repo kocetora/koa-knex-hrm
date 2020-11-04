@@ -19,8 +19,8 @@ describe('DELETE FORM', () => {
 
   it('200 SUCCESS', (done) => {
     chai
-      .request('http://localhost:3000')
-      .delete('/v1/form/2147483646')
+      .request('http://localhost:3000/v1')
+      .delete('/form/2147483646')
       .type('form')
       .set('content-type', 'application/json')
       .send()
@@ -32,8 +32,8 @@ describe('DELETE FORM', () => {
 
   it('404 form not found', (done) => {
     chai
-      .request('http://localhost:3000')
-      .delete('/v1/form/19490')
+      .request('http://localhost:3000/v1')
+      .delete('/form/19490')
       .type('form')
       .set('content-type', 'application/json')
       .send()

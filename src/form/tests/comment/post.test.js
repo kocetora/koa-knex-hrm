@@ -42,8 +42,8 @@ describe('POST COMMENT', () => {
   });
   it('200 successfully posted comment', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/v1/form/2147483646/comment')
+      .request('http://localhost:3000/v1')
+      .post('/form/2147483646/comment')
       .type('form')
       .set('content-type', 'application/json')
       .send(comment)
@@ -54,8 +54,8 @@ describe('POST COMMENT', () => {
   });
   it('404 not found form', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/v1/form/2843299/comment')
+      .request('http://localhost:3000/v1')
+      .post('/form/2843299/comment')
       .type('form')
       .set('content-type', 'application/json')
       .send(comment)
@@ -66,8 +66,8 @@ describe('POST COMMENT', () => {
   });
   it('404 not found user', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/v1/form/2147483646/comment')
+      .request('http://localhost:3000/v1')
+      .post('/form/2147483646/comment')
       .type('form')
       .set('content-type', 'application/json')
       .send(unexistComment)
@@ -78,8 +78,8 @@ describe('POST COMMENT', () => {
   });
   it('400 not found user', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/v1/form/2147483646/comment')
+      .request('http://localhost:3000/v1')
+      .post('/form/2147483646/comment')
       .type('form')
       .set('content-type', 'application/json')
       .send(incorrectUserComment)
@@ -90,8 +90,8 @@ describe('POST COMMENT', () => {
   });
   it('400 incorrect comment', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/v1/form/2147483646/comment')
+      .request('http://localhost:3000/v1')
+      .post('/form/2147483646/comment')
       .type('form')
       .set('content-type', 'application/json')
       .send(incorrectComment)
@@ -102,8 +102,8 @@ describe('POST COMMENT', () => {
   });
   it('400 bad formid', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/v1/form/2843299u/comment')
+      .request('http://localhost:3000/v1')
+      .post('/form/2843299u/comment')
       .type('form')
       .set('content-type', 'application/json')
       .send(comment)

@@ -10,8 +10,8 @@ chai.use(chaiMatchPattern);
 describe('LOGIN', () => {
   it('LOGIN CORRECT DATA 200', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/login')
+      .request('http://localhost:3000/v1')
+      .get('/logout')
       .type('form')
       .set('content-type', 'application/json')
       .send()
