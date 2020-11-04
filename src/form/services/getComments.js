@@ -8,7 +8,8 @@ const getComments = async (formid) => {
     error.code = 404;
     throw error;
   }
-  await queries.getComments(formid);
+  const comments = await queries.getComments(formid);
+  return comments;
 };
 
 module.exports = {

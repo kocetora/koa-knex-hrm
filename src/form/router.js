@@ -19,11 +19,6 @@ router
     validators.comment,
     controllers.addComment
   )
-  .get(
-    '/:formid/comment',
-    validators.formid,
-    validators.userid,
-    controllers.getComments
-  );
+  .get('/:formid/comment', validators.formid, controllers.getComments);
 
 module.exports = router;
