@@ -1,7 +1,7 @@
 'use strict';
 const knex = require('../../db/knex');
 
-const addUser = (user) =>
+const addUser = user =>
   knex('users')
     .insert({
       ...user,

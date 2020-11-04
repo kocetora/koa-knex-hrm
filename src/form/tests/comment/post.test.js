@@ -34,13 +34,13 @@ const unexistComment = {
 };
 
 describe('POST COMMENT', () => {
-  before((done) => {
+  before(done => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
       .then(() => done());
   });
-  it('200 successfully posted comment', (done) => {
+  it('200 successfully posted comment', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
@@ -52,7 +52,7 @@ describe('POST COMMENT', () => {
         done();
       });
   });
-  it('404 not found form', (done) => {
+  it('404 not found form', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2843299/comment')
@@ -64,7 +64,7 @@ describe('POST COMMENT', () => {
         done();
       });
   });
-  it('404 not found user', (done) => {
+  it('404 not found user', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
@@ -76,7 +76,7 @@ describe('POST COMMENT', () => {
         done();
       });
   });
-  it('400 not found user', (done) => {
+  it('400 not found user', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
@@ -88,7 +88,7 @@ describe('POST COMMENT', () => {
         done();
       });
   });
-  it('400 incorrect comment', (done) => {
+  it('400 incorrect comment', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
@@ -100,7 +100,7 @@ describe('POST COMMENT', () => {
         done();
       });
   });
-  it('400 bad formid', (done) => {
+  it('400 bad formid', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2843299u/comment')

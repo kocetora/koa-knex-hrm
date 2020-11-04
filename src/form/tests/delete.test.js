@@ -10,14 +10,14 @@ const knex = require('../../db/knex');
 const { expect } = require('chai');
 
 describe('DELETE FORM', () => {
-  before((done) => {
+  before(done => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
       .then(() => done());
   });
 
-  it('200 SUCCESS', (done) => {
+  it('200 SUCCESS', done => {
     chai
       .request('http://localhost:3000/v1')
       .delete('/form/2147483646')
@@ -30,7 +30,7 @@ describe('DELETE FORM', () => {
       });
   });
 
-  it('404 form not found', (done) => {
+  it('404 form not found', done => {
     chai
       .request('http://localhost:3000/v1')
       .delete('/form/19490')

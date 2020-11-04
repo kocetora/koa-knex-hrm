@@ -1,10 +1,10 @@
 'use strict';
 const queries = require('../queries/index');
 
-const getForm = async (formid) => {
+const getForm = async formid => {
   const [form] = await queries.getForm(formid);
   if (!form) {
-    const error = new Error("Form with this id doesn't exists");
+    const error = new Error('Form with this id doesn\'t exists');
     error.code = 404;
     throw error;
   } else {

@@ -6,7 +6,7 @@ const addComment = async (formid, { userid, comment }) => {
   const [user] = await queries.getUser(userid);
   if (!form || !user) {
     const record = form ? 'User' : 'Form';
-    const error = new Error(record + " with this id doesn't exists");
+    const error = new Error(record + ' with this id doesn\'t exists');
     error.code = 404;
     throw error;
   }

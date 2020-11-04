@@ -10,13 +10,13 @@ const knex = require('../../../db/knex');
 const { expect } = require('chai');
 
 describe('GET COMMENT', () => {
-  before((done) => {
+  before(done => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
       .then(() => done());
   });
-  it('200 successfully got comment', (done) => {
+  it('200 successfully got comment', done => {
     chai
       .request('http://localhost:3000/v1')
       .get('/form/2147483646/comment')
@@ -29,7 +29,7 @@ describe('GET COMMENT', () => {
         done();
       });
   });
-  it('404 form not found', (done) => {
+  it('404 form not found', done => {
     chai
       .request('http://localhost:3000/v1')
       .get('/form/78423/comment')

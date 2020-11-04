@@ -21,7 +21,7 @@ function createComments(knex) {
         await knex('comments').insert({ ...el });
       }
     })
-    .catch((err) => console.log('Seeding createComments error:' + err));
+    .catch(err => console.log('Seeding createComments error:' + err));
 }
 
 exports.seed = createComments;

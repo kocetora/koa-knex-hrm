@@ -28,8 +28,8 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           commit_message: 'fix: code style issues with ${linter}'
-          # eslint_args: '--fix'
-          eslint: true
-          # prettier_args: '--write'
           prettier: true
           prettier_extensions: js,json,ts
+          prettier_args: '--write'
+          eslint: true
+          eslint_args: '--fix'
