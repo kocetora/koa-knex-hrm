@@ -19,8 +19,8 @@ describe('REGISTER', () => {
 
   it('200 SUCCESS', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/v1/auth/register')
+      .request('http://localhost:3000/v1')
+      .post('/auth/register')
       .type('form')
       .set('content-type', 'application/json')
       .send({
@@ -39,8 +39,8 @@ describe('REGISTER', () => {
 
   it('400 shorter length username', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/v1/auth/register')
+      .request('http://localhost:3000/v1')
+      .post('/auth/register')
       .type('form')
       .set('content-type', 'application/json')
       .send({
@@ -55,8 +55,8 @@ describe('REGISTER', () => {
 
   it('400 Bigger length password', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/v1/auth/register')
+      .request('http://localhost:3000/v1')
+      .post('/auth/register')
       .type('form')
       .set('content-type', 'application/json')
       .send({
@@ -71,8 +71,8 @@ describe('REGISTER', () => {
 
   it('409 Username is taken', (done) => {
     chai
-      .request('http://localhost:3000')
-      .post('/v1/auth/register')
+      .request('http://localhost:3000/v1')
+      .post('/auth/register')
       .type('form')
       .set('content-type', 'application/json')
       .send({

@@ -19,8 +19,8 @@ describe('GET FORM', () => {
 
   it('200 SUCCESS', (done) => {
     chai
-      .request('http://localhost:3000')
-      .get('/v1/form/2147483646')
+      .request('http://localhost:3000/v1')
+      .get('/form/2147483646')
       .type('form')
       .set('content-type', 'application/json')
       .send()
@@ -32,8 +32,8 @@ describe('GET FORM', () => {
 
   it('404 form not found', (done) => {
     chai
-      .request('http://localhost:3000')
-      .get('/v1/form/4383991')
+      .request('http://localhost:3000/v1')
+      .get('/form/4383991')
       .type('form')
       .set('content-type', 'application/json')
       .send()

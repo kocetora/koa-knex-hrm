@@ -18,8 +18,8 @@ describe('GET FORMS', () => {
   });
   it('200 SUCCESS', (done) => {
     chai
-      .request('http://localhost:3000')
-      .get('/v1/base/')
+      .request('http://localhost:3000/v1')
+      .get('/base/')
       .type('form')
       .set('content-type', 'application/json')
       .send()
