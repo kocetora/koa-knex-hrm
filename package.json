@@ -5,10 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "lint": "eslint --fix *.js && eslint --fix **/*.js && eslint --fix **/**/*.js",
+    "lint": "eslint --fix *.js && eslint --fix **/*.js ",
     "prettier": "prettier --write .",
     "style": "npm run prettier && npm run lint",
-    "test": "nyc mocha --exit --recursive --timeout 50000 src/**/*.test.js && mocha --exit --recursive --timeout 20000 src/**/**/*.test.js"
+    "test": "mocha --exit test/*.js",
+    "posttest": "stryker run"
   },
   "dependencies": {
     "@koa/cors": "^3.1.0",
@@ -27,6 +28,8 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@stryker-mutator/core": "^4.1.0",
+    "@stryker-mutator/mocha-runner": "^4.1.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "chai-match-pattern": "^1.2.0",
@@ -35,7 +38,13 @@
     "mocha": "^8.1.2",
     "nodemon": "^2.0.4",
     "nyc": "^15.1.0",
-    "prettier": "2.1.2"
+    "prettier": "2.1.2",
+    "stryker": "^0.35.1",
+    "stryker-api": "^0.24.1",
+    "stryker-html-reporter": "^0.18.1",
+    "stryker-javascript-mutator": "^0.14.1",
+    "stryker-mocha-framework": "^0.15.1",
+    "stryker-mocha-runner": "^0.17.1"
   },
   "author": "kocetora",
   "license": "ISC"
