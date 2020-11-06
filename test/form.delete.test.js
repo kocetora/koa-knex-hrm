@@ -26,6 +26,7 @@ describe('DELETE FORM', () => {
       .send()
       .end((error, res) => {
         expect(res).to.have.status(200);
+        expect(res.text).equals('Request processed successfully');
         done();
       });
   });
@@ -39,6 +40,7 @@ describe('DELETE FORM', () => {
       .send()
       .end((error, res) => {
         expect(res).to.have.status(404);
+        expect(res.text).equals('Form with this id doesn\'t exist');
         done();
       });
   });

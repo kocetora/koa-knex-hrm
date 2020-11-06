@@ -24,7 +24,13 @@ describe('GET COMMENT', () => {
       .set('content-type', 'application/json')
       .send()
       .end((error, res) => {
-        console.log(res.message);
+        expect(res.body[0]).to.have.all.keys(
+          'id',
+          'comment',
+          'userid',
+          'formid',
+          'created_at'
+        );
         expect(res).to.have.status(200);
         done();
       });
@@ -37,6 +43,7 @@ describe('GET COMMENT', () => {
       .set('content-type', 'application/json')
       .send()
       .end((error, res) => {
+        expect(res.text).equals('Form with this id doesn\'t exist');
         expect(res).to.have.status(404);
         done();
       });

@@ -76,6 +76,7 @@ describe('UPDATE FORM', () => {
       .set('content-type', 'application/json')
       .send(form)
       .end((error, res) => {
+        expect(res.text).equals('Form with this id doesn\'t exist');
         expect(res).to.have.status(404);
         done();
       });
@@ -88,6 +89,9 @@ describe('UPDATE FORM', () => {
       .set('content-type', 'application/json')
       .send(incorrectForm)
       .end((error, res) => {
+        expect(res.text).equals(
+          'Incorrect messenger. May be Telegram, Viber or WhatsApp only'
+        );
         expect(res).to.have.status(400);
         done();
       });

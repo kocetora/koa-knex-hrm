@@ -25,6 +25,33 @@ describe('GET FORM', () => {
       .set('content-type', 'application/json')
       .send()
       .end((error, res) => {
+        expect(res.body.messengers[0]).to.have.all.keys('messenger', 'info');
+        expect(res.body.professions[0]).to.have.all.keys('profession');
+        expect(res.body.languageSkills[0]).to.have.all.keys(
+          'language',
+          'languageProficiency'
+        );
+        expect(res.body).to.have.all.keys(
+          'id',
+          'name',
+          'surname',
+          'born',
+          'sex',
+          'height',
+          'phoneNumber',
+          'email',
+          'prefferedRegion',
+          'education',
+          'expectedSalary',
+          'workExperience',
+          'unemployedFor',
+          'note',
+          'created_at',
+          'updated_at',
+          'professions',
+          'messengers',
+          'languageSkills'
+        );
         expect(res).to.have.status(200);
         done();
       });
@@ -38,6 +65,7 @@ describe('GET FORM', () => {
       .set('content-type', 'application/json')
       .send()
       .end((error, res) => {
+        expect(res.text).equals('Form with this id doesn\'t exist');
         expect(res).to.have.status(404);
         done();
       });
