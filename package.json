@@ -8,7 +8,7 @@
     "lint": "eslint --fix *.js && eslint --fix **/*.js && eslint --fix **/**/*.js",
     "prettier": "prettier --write .",
     "style": "npm run prettier && npm run lint",
-    "test": "mocha --exit test/*.js",
+    "test": "nyc mocha --exit --timeout 10000 test/*.js",
     "posttest": "stryker run"
   },
   "dependencies": {

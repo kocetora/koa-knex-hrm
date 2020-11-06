@@ -28,11 +28,8 @@ describe('REGISTER', () => {
         password: '12387324',
       })
       .end((error, res) => {
+        expect(res.text).equals('Request processed successfully');
         expect(res.statusCode).to.equal(200);
-        expect(res.body).to.matchPattern({
-          success: true,
-          message: 'User successfully registered',
-        });
         done();
       });
   });
@@ -48,6 +45,9 @@ describe('REGISTER', () => {
         password: '1238732',
       })
       .end((error, res) => {
+        expect(res.text).equals(
+          'Wrong username. Should be longer than 2 and shorter then 128'
+        );
         expect(res.statusCode).to.equal(400);
         done();
       });
@@ -64,6 +64,9 @@ describe('REGISTER', () => {
         password: '1'.repeat(129),
       })
       .end((error, res) => {
+        expect(res.text).equals(
+          'Wrong password. Should be longer than 6 and shorter then 128'
+        );
         expect(res.statusCode).to.equal(400);
         done();
       });
@@ -80,11 +83,8 @@ describe('REGISTER', () => {
         password: 'password',
       })
       .end((error, res) => {
+        expect(res.text).equals('Username is already taken');
         expect(res.statusCode).to.equal(409);
-        expect(res.body).to.matchPattern({
-          success: false,
-          message: 'Username is already taken',
-        });
         done();
       });
   });

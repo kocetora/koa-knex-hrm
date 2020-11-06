@@ -1,0 +1,6 @@
+/node_modules/
+.env
+.nyc_output
+.stryker-tmp
+/reports/
+stryker.log

@@ -48,6 +48,7 @@ describe('POST COMMENT', () => {
       .set('content-type', 'application/json')
       .send(comment)
       .end((error, res) => {
+        expect(res.text).equals('Request processed successfully');
         expect(res).to.have.status(200);
         done();
       });
@@ -60,6 +61,7 @@ describe('POST COMMENT', () => {
       .set('content-type', 'application/json')
       .send(comment)
       .end((error, res) => {
+        expect(res.text).equals('Form with this id doesn\'t exist');
         expect(res).to.have.status(404);
         done();
       });
@@ -72,11 +74,12 @@ describe('POST COMMENT', () => {
       .set('content-type', 'application/json')
       .send(unexistComment)
       .end((error, res) => {
+        expect(res.text).equals('User with this id doesn\'t exist');
         expect(res).to.have.status(404);
         done();
       });
   });
-  it('400 not found user', done => {
+  it('400 incorect user id', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
@@ -84,6 +87,9 @@ describe('POST COMMENT', () => {
       .set('content-type', 'application/json')
       .send(incorrectUserComment)
       .end((error, res) => {
+        expect(res.text).equals(
+          'Incorrect userid. Should be bigger than 1 and less then 2147483647'
+        );
         expect(res).to.have.status(400);
         done();
       });
@@ -96,11 +102,14 @@ describe('POST COMMENT', () => {
       .set('content-type', 'application/json')
       .send(incorrectComment)
       .end((error, res) => {
+        expect(res.text).equals(
+          'Incorrect comment. Should be longer than 1 and shorter then 128'
+        );
         expect(res).to.have.status(400);
         done();
       });
   });
-  it('400 bad formid', done => {
+  it('400 incorrect formid', done => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2843299u/comment')
@@ -108,6 +117,9 @@ describe('POST COMMENT', () => {
       .set('content-type', 'application/json')
       .send(comment)
       .end((error, res) => {
+        expect(res.text).equals(
+          'Incorrect formid. Should be bigger than 1 and less then 2147483647'
+        );
         expect(res).to.have.status(400);
         done();
       });

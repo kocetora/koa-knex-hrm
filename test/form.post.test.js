@@ -135,6 +135,7 @@ describe('POST FORM', () => {
       .set('content-type', 'application/json')
       .send(form)
       .end((error, res) => {
+        expect(res.text).equals('Request processed successfully');
         expect(res).to.have.status(200);
         done();
       });
@@ -147,7 +148,9 @@ describe('POST FORM', () => {
       .set('content-type', 'application/json')
       .send(incorrectFormName)
       .end((error, res) => {
-        console.log(error);
+        expect(res.text).equals(
+          'Incorrect name. Should be longer than 2 and shorter then 128'
+        );
         expect(res).to.have.status(400);
         done();
       });
@@ -160,7 +163,7 @@ describe('POST FORM', () => {
       .set('content-type', 'application/json')
       .send(incorrectFormEmail)
       .end((error, res) => {
-        console.log(error);
+        expect(res.text).equals('Incorrect email');
         expect(res).to.have.status(400);
         done();
       });
@@ -173,7 +176,9 @@ describe('POST FORM', () => {
       .set('content-type', 'application/json')
       .send(incorrectFormSurname)
       .end((error, res) => {
-        console.log(error);
+        expect(res.text).equals(
+          'Incorrect surname. Should be longer than 2 and shorter then 128'
+        );
         expect(res).to.have.status(400);
         done();
       });
@@ -186,7 +191,9 @@ describe('POST FORM', () => {
       .set('content-type', 'application/json')
       .send(incorrectFormHeight)
       .end((error, res) => {
-        console.log(error);
+        expect(res.text).equals(
+          'Incorrect height. Should be bigger than 30 and less then 300'
+        );
         expect(res).to.have.status(400);
         done();
       });
