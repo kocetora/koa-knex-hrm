@@ -59,46 +59,56 @@ const filter = async (ctx, next) => {
     );
   }
 
-  if(height){
-    height.forEach((obj) => {
-      for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-          const el = obj[key];
-          if (!el ||
-              !isInt(el.toString(), {
-                min: 30,
-                max: 300,
-              })
-          ) {
-            return ctx.throw(
-              400,
-              'Incorrect height. Should be bigger than 30 and less then 300'
-            );
-          }
+  if(height && height[0]){
+    if (Object.getOwnPropertyNames(height[0])[0] !== 'from' ||
+        Object.getOwnPropertyNames(height[0])[1] !== 'to') {
+      return ctx.throw(
+        400,
+        'Undefined from or to field. Should be bigger than 30 and less then 300'
+      );
+    }
+    for (const key in height[0]) {
+      if (height[0].hasOwnProperty(key)) {
+        const el = height[0][key];
+        if (!el ||
+            !isInt(el.toString(), {
+              min: 30,
+              max: 300,
+            })
+        ) {
+          return ctx.throw(
+            400,
+            'Incorrect height. Should be bigger than 30 and less then 300'
+          );
         }
       }
-    })
+    }
   }
 
-  if (age) {
-    age.forEach((obj) => {
-      for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-          const el = obj[key];
-          if (!el ||
-              !isInt(el.toString(), {
-                min: 1,
-                max: 150,
-              })
-          ) {
-            return ctx.throw(
-              400,
-              'Incorrect age. Should be bigger than 1 and less then 150'
-            );
-          }
+  if (age && age[0]) {
+    if (Object.getOwnPropertyNames(age[0])[0] !== 'from' ||
+        Object.getOwnPropertyNames(age[0])[1] !== 'to') {
+      return ctx.throw(
+        400,
+        'Undefined from or to field. Should be bigger than 1 and less then 150'
+      );
+    }
+    for (const key in age[0]) {
+      if (age[0].hasOwnProperty(key)) {
+        const el = age[0][key];
+        if (!el ||
+            !isInt(el.toString(), {
+              min: 1,
+              max: 150,
+            })
+        ) {
+          return ctx.throw(
+            400,
+            'Incorrect age. Should be bigger than 1 and less then 150'
+          );
         }
       }
-    }) 
+    }
   }
 
   if (sex && 
@@ -117,7 +127,7 @@ const filter = async (ctx, next) => {
     );
   }
   
-  if (professions) {
+  if (professions && professions[0]) {
     professions.forEach((obj) => {
       if (Object.getOwnPropertyNames(obj)[0] !== 'profession') {
         return ctx.throw(
@@ -126,32 +136,26 @@ const filter = async (ctx, next) => {
             'manager, pit_boss, waiter or barman only'
         );
       }
-      for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-          const el = obj[key];
-          if (!isIn(el, [
-                'trainee',
-                'dealer',
-                'inspector',
-                'manager',
-                'pit_boss',
-                'waiter',
-                'barman',
-              ])
-          ) {
-            console.log('cn ' +  el)
-            return ctx.throw(
-              400,
-              'Incorrect profession. May be trainee, dealer, inspector, ' +
-                'manager, pit_boss, waiter or barman only'
-            );
-          } 
-        }
-      }
+      if (!isIn(obj.profession, [
+            'trainee',
+            'dealer',
+            'inspector',
+            'manager',
+            'pit_boss',
+            'waiter',
+            'barman',
+          ])
+      ) {
+        return ctx.throw(
+          400,
+          'Incorrect profession. May be trainee, dealer, inspector, ' +
+            'manager, pit_boss, waiter or barman only'
+        );
+      } 
     })
   }
 
-    if (messengers) {
+    if (messengers && messengers[0]) {
     messengers.forEach((obj) => {
       if (Object.getOwnPropertyNames(obj)[0] !== 'messenger') {
         return ctx.throw(
@@ -159,21 +163,16 @@ const filter = async (ctx, next) => {
           'Undefined messenger. May be Telegram, Viber or WhatsApp only'
         );
       }
-      for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-          const el = obj[key];
-          if (!isIn(el, ['Telegram', 'Viber', 'WhatsApp'])) {
-            return ctx.throw(
-              400,
-              'Incorrect messenger. May be Telegram, Viber or WhatsApp only'
-            );
-          } 
-        } 
-      }
+      if (!isIn(obj.messenger, ['Telegram', 'Viber', 'WhatsApp'])) {
+        return ctx.throw(
+          400,
+          'Incorrect messenger. May be Telegram, Viber or WhatsApp only'
+        );
+      } 
     })
   }
 
-  if (languageSkills) {
+  if (languageSkills && languageSkills[0]) {
     languageSkills.forEach((obj) => {
       if (Object.getOwnPropertyNames(obj)[0] !== 'language' &&
           Object.getOwnPropertyNames(obj)[1] !== 'language'
