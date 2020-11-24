@@ -37,10 +37,10 @@ const whereExpectedSalary = (formids, expectedSalary) =>
     .select('id');
 
 const whereBorn = (formids, born) =>
-  knex('forms').whereIn('id', formids).whereIn('born', born).select('id');
+  knex('forms').whereIn('id', formids).whereBetween('born', born).select('id');
 
 const whereHeight = (formids, height) =>
-  knex('forms').whereIn('id', formids).whereIn('height', height).select('id');
+  knex('forms').whereIn('id', formids).whereBetween('height', height).select('id');
 
 const whereLanguageSkills = (formids, language, languageProficiency) =>
   knex('languageSkills')
@@ -59,12 +59,12 @@ const whereMessengers = (formids, messengers) =>
   knex('messengers')
     .whereIn('formid', formids)
     .whereIn('messenger', messengers)
-    .select('formid');
+    .select();
 
 const whereSubmitted = (formids, submitted) =>
   knex('forms')
     .whereIn('id', formids)
-    .whereIn('createdAt', submitted)
+    .whereRaw('DATE(created_at) = ?', submitted)
     .select('id');
 
 module.exports = {
