@@ -60,7 +60,7 @@ const filterForms = async ({
   }
 
   async function whereAge (formids, age) {
-    if(age){
+    if(age && age[0]){
       const bornFrom = new Date(new Date() - age[0].to * (24 * 3600 * 365.25 * 1000));
       const bornTo = new Date(new Date() - age[0].from * (24 * 3600 * 365.25 * 1000))
       const ids = await queries.whereBorn(
@@ -73,7 +73,7 @@ const filterForms = async ({
   }
 
   async function whereHeight (formids, height) {
-    if (height) {
+    if (height && height[0]) {
       const ids = await queries.whereHeight(
         formidsToArray(formids), 
         [height[0].from, height[0].to])
@@ -117,7 +117,7 @@ const filterForms = async ({
   }
 
   async function whereLanguageSkills (formids, languageSkills) {
-    if (languageSkills) {
+    if (languageSkills && languageSkills[0]) {
       const ids = await queries.whereLanguageSkills(
         formidsToArray(formids), 
         languageSkills.language, languageSkills.languageProficiency)
@@ -128,7 +128,7 @@ const filterForms = async ({
   }
 
   async function whereProfessions (formids, professions) {
-    if (professions) {
+    if (professions && professions[0]) {
       const ids = await queries.whereProfessions(
         formidsToArray(formids), 
         Array.from(professions, el => el.profession))
@@ -139,7 +139,7 @@ const filterForms = async ({
   }
 
   async function whereMessengers (formids, messengers) {
-    if (messengers) {
+    if (messengers && messengers[0]) {
       const ids = await queries.whereMessengers(
         formidsToArray(formids), 
         Array.from(messengers, el => el.messenger))
@@ -180,15 +180,15 @@ const filterForms = async ({
     .set()
     .add(whereSex, sex)
     .add(whereEducation, education)
-    // .add(whereAge, age)
-    // .add(whereHeight, height)
+    .add(whereAge, age)
+    .add(whereHeight, height)
     .add(whereWorkExperience, workExperience)
     .add(wherePhoneNumber, phoneNumber)
     .add(whereExpectedSalary, expectedSalary)
     .add(whereLanguageSkills, languageSkills[0])
     .add(whereLanguageSkills, languageSkills[1])
-    // .add(whereProfessions, professions)
-    // .add(whereMessengers, messengers)
+    .add(whereProfessions, professions)
+    .add(whereMessengers, messengers)
     .add(whereSubmitted, submitted)
     .add(result)
     .run(queries.getFormIds());
