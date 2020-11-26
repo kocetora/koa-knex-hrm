@@ -1,16 +1,10 @@
 'use strict';
+const Services = require('../services/index')
 
 const login = async ctx => {
   try {
-    // TODO: jwt and session
-    ctx.body = JSON.stringify({
-      userid: 1,
-      username: 'Msr. User',
-      token:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIx' +
-        'MjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.' +
-        'SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
-    });
+    const user = await Services.login(ctx.request.body);
+    ctx.body = user;
   } catch (err) {
     ctx.throw(400, err);
   }
