@@ -13,9 +13,10 @@
   },
   "dependencies": {
     "@koa/cors": "^3.1.0",
+    "argon2": "^0.27.1",
     "bcrypt-nodejs": "0.0.3",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.5",
+    "knex": "^0.21.13",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-passport": "^4.1.3",

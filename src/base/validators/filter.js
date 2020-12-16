@@ -17,12 +17,13 @@ const filter = async (ctx, next) => {
     submitted,
   } = ctx.request.body;
 
-  if (expectedSalary &&
-      !isInt(expectedSalary.toString(), {
-        min: 1,
-        max: 100000,
-      })
-    ) {
+  if (
+    expectedSalary &&
+    !isInt(expectedSalary.toString(), {
+      min: 1,
+      max: 100000,
+    })
+  ) {
     return ctx.throw(
       400,
       'Incorrect expectedSalary. Should be bigger than ' +
@@ -34,24 +35,26 @@ const filter = async (ctx, next) => {
     return ctx.throw(400, 'Incorrect submitted date. Should be YYYY-MM-DD');
   }
 
-  if (phoneNumber &&
-      !isLength(phoneNumber, {
-        min: 5,
-        max: 20,
-      })
-    ) {
+  if (
+    phoneNumber &&
+    !isLength(phoneNumber, {
+      min: 5,
+      max: 20,
+    })
+  ) {
     return ctx.throw(
       400,
       'Incorrect phoneNumber. Should be longer than 5 and shorter then 20'
     );
   }
 
-  if (workExperience &&
-      !isInt(workExperience.toString(), {
-        min: 0,
-        max: 1211,
-      })
-    ) {
+  if (
+    workExperience &&
+    !isInt(workExperience.toString(), {
+      min: 0,
+      max: 1211,
+    })
+  ) {
     return ctx.throw(
       400,
       'Incorrect workExperience. Should be bigger than ' +
@@ -59,22 +62,25 @@ const filter = async (ctx, next) => {
     );
   }
 
-  if(height && height[0]){
-    if (Object.getOwnPropertyNames(height[0])[0] !== 'from' ||
-        Object.getOwnPropertyNames(height[0])[1] !== 'to') {
+  if (height && height[0]) {
+    if (
+      Object.getOwnPropertyNames(height[0])[0] !== 'from' ||
+      Object.getOwnPropertyNames(height[0])[1] !== 'to'
+    ) {
       return ctx.throw(
         400,
         'Undefined from or to field. Should be bigger than 30 and less then 300'
       );
     }
     for (const key in height[0]) {
-      if (height[0].hasOwnProperty(key)) {
+      if (height[0][key]) {
         const el = height[0][key];
-        if (!el ||
-            !isInt(el.toString(), {
-              min: 30,
-              max: 300,
-            })
+        if (
+          !el ||
+          !isInt(el.toString(), {
+            min: 30,
+            max: 300,
+          })
         ) {
           return ctx.throw(
             400,
@@ -86,21 +92,24 @@ const filter = async (ctx, next) => {
   }
 
   if (age && age[0]) {
-    if (Object.getOwnPropertyNames(age[0])[0] !== 'from' ||
-        Object.getOwnPropertyNames(age[0])[1] !== 'to') {
+    if (
+      Object.getOwnPropertyNames(age[0])[0] !== 'from' ||
+      Object.getOwnPropertyNames(age[0])[1] !== 'to'
+    ) {
       return ctx.throw(
         400,
         'Undefined from or to field. Should be bigger than 1 and less then 150'
       );
     }
     for (const key in age[0]) {
-      if (age[0].hasOwnProperty(key)) {
+      if (age[0][key]) {
         const el = age[0][key];
-        if (!el ||
-            !isInt(el.toString(), {
-              min: 1,
-              max: 150,
-            })
+        if (
+          !el ||
+          !isInt(el.toString(), {
+            min: 1,
+            max: 150,
+          })
         ) {
           return ctx.throw(
             400,
@@ -111,24 +120,23 @@ const filter = async (ctx, next) => {
     }
   }
 
-  if (sex && 
-      !isIn(sex, ['male', 'female'])
-    ) {
+  if (sex && !isIn(sex, ['male', 'female'])) {
     return ctx.throw(400, 'Incorrect sex. May be male or female only');
   }
 
-  if (education &&
-      !isIn(education, ['primary', 'secondary', 'unfinished_higher', 'higher'])
-    ) {
-      return ctx.throw(
-        400,
-        'Incorrect education. May be primary, secondary, ' +
-          'unfinished_higher or higher only'
+  if (
+    education &&
+    !isIn(education, ['primary', 'secondary', 'unfinished_higher', 'higher'])
+  ) {
+    return ctx.throw(
+      400,
+      'Incorrect education. May be primary, secondary, ' +
+        'unfinished_higher or higher only'
     );
   }
-  
+
   if (professions && professions[0]) {
-    professions.forEach((obj) => {
+    professions.forEach(obj => {
       if (Object.getOwnPropertyNames(obj)[0] !== 'profession') {
         return ctx.throw(
           400,
@@ -136,27 +144,28 @@ const filter = async (ctx, next) => {
             'manager, pit_boss, waiter or barman only'
         );
       }
-      if (!isIn(obj.profession, [
-            'trainee',
-            'dealer',
-            'inspector',
-            'manager',
-            'pit_boss',
-            'waiter',
-            'barman',
-          ])
+      if (
+        !isIn(obj.profession, [
+          'trainee',
+          'dealer',
+          'inspector',
+          'manager',
+          'pit_boss',
+          'waiter',
+          'barman',
+        ])
       ) {
         return ctx.throw(
           400,
           'Incorrect profession. May be trainee, dealer, inspector, ' +
             'manager, pit_boss, waiter or barman only'
         );
-      } 
-    })
+      }
+    });
   }
 
-    if (messengers && messengers[0]) {
-    messengers.forEach((obj) => {
+  if (messengers && messengers[0]) {
+    messengers.forEach(obj => {
       if (Object.getOwnPropertyNames(obj)[0] !== 'messenger') {
         return ctx.throw(
           400,
@@ -168,26 +177,28 @@ const filter = async (ctx, next) => {
           400,
           'Incorrect messenger. May be Telegram, Viber or WhatsApp only'
         );
-      } 
-    })
+      }
+    });
   }
 
   if (languageSkills && languageSkills[0]) {
-    languageSkills.forEach((obj) => {
-      if (Object.getOwnPropertyNames(obj)[0] !== 'language' &&
-          Object.getOwnPropertyNames(obj)[1] !== 'language'
-          ) {
-          return ctx.throw(
-            400,
-            'Undefined language. May be russian or english only'
+    languageSkills.forEach(obj => {
+      if (
+        Object.getOwnPropertyNames(obj)[0] !== 'language' &&
+        Object.getOwnPropertyNames(obj)[1] !== 'language'
+      ) {
+        return ctx.throw(
+          400,
+          'Undefined language. May be russian or english only'
         );
       }
-      if (Object.getOwnPropertyNames(obj)[0] !== 'languageProficiency' &&
-          Object.getOwnPropertyNames(obj)[1] !== 'languageProficiency'
-          ) {
-          return ctx.throw(
-            400,
-            'Undefined languageProficiency. May be russian or ' +
+      if (
+        Object.getOwnPropertyNames(obj)[0] !== 'languageProficiency' &&
+        Object.getOwnPropertyNames(obj)[1] !== 'languageProficiency'
+      ) {
+        return ctx.throw(
+          400,
+          'Undefined languageProficiency. May be russian or ' +
             'native, fluent, intermediate or basic only'
         );
       }
@@ -197,7 +208,8 @@ const filter = async (ctx, next) => {
           'Incorrect language. May be russian or english only'
         );
       }
-      if (!isIn(obj.languageProficiency, [
+      if (
+        !isIn(obj.languageProficiency, [
           'native',
           'fluent',
           'intermediate',
@@ -210,9 +222,9 @@ const filter = async (ctx, next) => {
             'native, fluent, intermediate or basic only'
         );
       }
-    })
+    });
   }
-  
+
   return next();
 };
 

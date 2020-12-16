@@ -18,6 +18,7 @@ const addForm = async ({
   messengers,
   professions,
   languageSkills,
+  isPublic,
 }) => {
   const [id] = await queries.addForm({
     name,
@@ -33,6 +34,7 @@ const addForm = async ({
     workExperience,
     unemployedFor,
     note,
+    isPublic,
   });
   await queries.addProfessions(id, professions);
   await queries.addMessengers(id, messengers);

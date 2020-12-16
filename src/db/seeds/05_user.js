@@ -1,10 +1,15 @@
 'use strict';
+const argon = require('argon2');
 
 const user = {
   id: 2147483646,
   username: 'login',
-  password: 'password',
+  role: 'admin',
 };
+
+(async () => {
+  user.password_hash = await argon.hash('password');
+})();
 
 function createUser(knex) {
   return knex('users')

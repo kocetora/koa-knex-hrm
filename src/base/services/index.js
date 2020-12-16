@@ -1,8 +1,6 @@
 'use strict';
-const { getForms } = require('./getForms');
-const { filterForms } = require('./filterForms');
+const { findForms } = require('./findForms');
 
 module.exports = {
-  getForms,
-  filterForms,
+  findForms,
 };

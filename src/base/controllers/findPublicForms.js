@@ -1,9 +1,9 @@
 'use strict';
 const Services = require('../services/index');
 
-const filterForms = async ctx => {
+const findPublicForms = async ctx => {
   try {
-    ctx.body = await Services.filterForms(ctx.request.body);
+    ctx.body = await Services.findForms(ctx.request.body, true);
     return ctx;
   } catch (err) {
     return ctx.throw(err.code, err.message);
@@ -11,5 +11,5 @@ const filterForms = async ctx => {
 };
 
 module.exports = {
-  filterForms,
+  findPublicForms,
 };
