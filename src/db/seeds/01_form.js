@@ -15,6 +15,7 @@ const form = {
   workExperience: 27,
   unemployedFor: 12,
   note: 'sdv',
+  isPublic: true,
 };
 
 function createForm(knex) {

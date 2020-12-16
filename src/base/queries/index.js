@@ -16,6 +16,7 @@ const { whereLanguageSkills } = require('./filterForms');
 const { whereProfessions } = require('./filterForms');
 const { whereMessengers } = require('./filterForms');
 const { whereSubmitted } = require('./filterForms');
+const { whereIsPublic } = require('./filterForms');
 
 module.exports = {
   getForms,
@@ -35,4 +36,5 @@ module.exports = {
   whereProfessions,
   whereMessengers,
   whereSubmitted,
+  whereIsPublic,
 };

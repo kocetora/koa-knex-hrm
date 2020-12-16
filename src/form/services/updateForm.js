@@ -42,16 +42,13 @@ const updateForm = async (
     workExperience,
     unemployedFor,
     note,
+    updated_at: new Date(),
   });
-  try {
-    await queries.updateProfessions(formid, professions);
-    await queries.updateMessengers(formid, messengers);
-    await queries.updateLanguageSkills(formid, languageSkills);
-    const result = await queries.getForm(formid);
-    return result;
-  } catch (err) {
-    console.log(err);
-  }
+  await queries.updateProfessions(formid, professions);
+  await queries.updateMessengers(formid, messengers);
+  await queries.updateLanguageSkills(formid, languageSkills);
+  const result = await queries.getForm(formid);
+  return result;
 };
 
 module.exports = {

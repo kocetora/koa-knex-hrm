@@ -1,25 +1,28 @@
 'use strict';
 const queries = require('../queries/index');
-const auth = require('../../middleware/auth')
+const auth = require('../../middleware/auth');
+const argon = require('argon2');
 
 const login = async ({ username, password }) => {
   const [user] = await queries.getUser(username);
   if (user) {
-    if (username === user.username && password === user.password) {
+    const passwordFromHash = await argon.verify(user.password_hash, password);
+    if (username === user.username && passwordFromHash) {
       return {
-        userid: user.id, 
-        username: user.username, 
-        token: auth.getToken(user.id, user.username)
-      }
+        userid: user.id,
+        username: user.username,
+        role: user.role,
+        token: auth.getToken(user.id, user.username, user.role),
+      };
     } else {
-      const error = new Error('Username or password incorrect');
+      const error = new Error('Username or password is incorrect');
       error.code = 401;
-      throw error
+      throw error;
     }
   } else {
     const error = new Error('User with this username doesn\'t exist');
     error.code = 404;
-    throw error
+    throw error;
   }
 };
 

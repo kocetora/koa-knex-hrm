@@ -29,6 +29,7 @@ const user = (ctx, next) => {
       'Wrong password. Should be longer than 6 and shorter then 128'
     );
   }
+
   return next();
 };
 

@@ -1,6 +1,13 @@
 'use strict';
 
-const { isLength, isEmail, isInt, isDate, isIn } = require('validator');
+const {
+  isLength,
+  isEmail,
+  isInt,
+  isDate,
+  isIn,
+  isBoolean,
+} = require('validator');
 
 const form = (ctx, next) => {
   const {
@@ -20,6 +27,7 @@ const form = (ctx, next) => {
     messengers,
     professions,
     languageSkills,
+    isPublic,
   } = ctx.request.body;
   if (
     !name ||
@@ -145,6 +153,9 @@ const form = (ctx, next) => {
         ' and less then 2147483647'
     );
   }
+  if (isPublic !== undefined && !isBoolean(isPublic.toString())) {
+    return ctx.throw(400, 'Incorrect isPublic. Should be boolean');
+  }
   if (
     prefferedRegion !== undefined &&
     !isLength(prefferedRegion, {
@@ -224,6 +235,7 @@ const form = (ctx, next) => {
       );
     }
   });
+
   return next();
 };
 

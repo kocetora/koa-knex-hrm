@@ -1,5 +1,5 @@
 'use strict';
-const Services = require('../services/index')
+const Services = require('../services/index');
 
 const login = async ctx => {
   try {

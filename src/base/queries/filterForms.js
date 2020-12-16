@@ -3,14 +3,10 @@ const knex = require('../../db/knex');
 
 const getFormIds = () => knex('forms').select('id');
 
-const getFormsById = formids => knex('forms')
-  .whereIn('id', formids)
-  .select();
+const getFormsById = formids => knex('forms').whereIn('id', formids).select();
 
-const whereSex = (formids, sex) => knex('forms')
-  .whereIn('id', formids)
-  .where('sex', sex)
-  .select('id');
+const whereSex = (formids, sex) =>
+  knex('forms').whereIn('id', formids).where('sex', sex).select('id');
 
 const whereEducation = (formids, education) =>
   knex('forms')
@@ -40,14 +36,23 @@ const whereBorn = (formids, born) =>
   knex('forms').whereIn('id', formids).whereBetween('born', born).select('id');
 
 const whereHeight = (formids, height) =>
-  knex('forms').whereIn('id', formids).whereBetween('height', height).select('id');
+  knex('forms')
+    .whereIn('id', formids)
+    .whereBetween('height', height)
+    .select('id');
 
-const whereLanguageSkills = (formids, language, languageProficiency) =>
-  knex('languageSkills')
+const whereLanguageSkills = (formids, language, languageProficiency) => {
+  const languageProficiencyEnum = ['basic', 'intermediate', 'fluent', 'native'];
+  const minLangLevel = languageProficiencyEnum.slice(
+    languageProficiencyEnum.indexOf(languageProficiency)
+  );
+  return knex('languageSkills')
     .whereIn('formid', formids)
     .where('language', language)
-    .where('languageProficiency', languageProficiency)
+    .whereIn('languageProficiency', minLangLevel)
+    // .where('languageProficiency', languageProficiency)
     .select('formid');
+};
 
 const whereProfessions = (formids, professions) =>
   knex('professions')
@@ -67,6 +72,9 @@ const whereSubmitted = (formids, submitted) =>
     .whereRaw('DATE(created_at) = ?', submitted)
     .select('id');
 
+const whereIsPublic = (formids, isPublic) =>
+  knex('forms').whereIn('id', formids).where('isPublic', isPublic).select('id');
+
 module.exports = {
   getFormIds,
   getFormsById,
@@ -81,4 +89,5 @@ module.exports = {
   whereProfessions,
   whereMessengers,
   whereSubmitted,
+  whereIsPublic,
 };

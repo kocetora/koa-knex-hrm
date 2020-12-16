@@ -2,13 +2,25 @@
 const Router = require('koa-router');
 const controllers = require('./controllers/index');
 const validators = require('./validators/index');
+const middleware = require('../middleware/index');
 
 const router = new Router({
   prefix: '/base',
 });
 
 router
-  .get('/', controllers.getForms)
-  .post('/', validators.filter, controllers.filterForms);
+  .post(
+    '/',
+    middleware.check,
+    middleware.isUser,
+    validators.filter,
+    controllers.findForms
+  )
+  .post(
+    '/public',
+    middleware.check,
+    validators.filter,
+    controllers.findPublicForms
+  );
 
 module.exports = router;

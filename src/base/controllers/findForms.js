@@ -1,9 +1,9 @@
 'use strict';
 const Services = require('../services/index');
 
-const getForms = async ctx => {
+const findForms = async ctx => {
   try {
-    ctx.body = await Services.getForms();
+    ctx.body = await Services.findForms(ctx.request.body);
     return ctx;
   } catch (err) {
     return ctx.throw(err.code, err.message);
@@ -11,5 +11,5 @@ const getForms = async ctx => {
 };
 
 module.exports = {
-  getForms,
+  findForms,
 };
