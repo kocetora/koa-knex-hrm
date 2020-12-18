@@ -9,7 +9,8 @@
     "prettier": "prettier --write .",
     "style": "npm run prettier && npm run lint",
     "test": "nyc mocha --exit --timeout 10000 test/*.js",
-    "posttest": "stryker run"
+    "posttest": "stryker run",
+    "prof": "node --prof app.js"
   },
   "dependencies": {
     "@koa/cors": "^3.1.0",
