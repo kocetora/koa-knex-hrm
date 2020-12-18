@@ -44,9 +44,11 @@ const updateForm = async (
     note,
     updated_at: new Date(),
   });
-  await queries.updateProfessions(formid, professions);
-  await queries.updateMessengers(formid, messengers);
-  await queries.updateLanguageSkills(formid, languageSkills);
+  await Promise.all([
+    queries.updateProfessions(formid, professions),
+    queries.updateMessengers(formid, messengers),
+    queries.updateLanguageSkills(formid, languageSkills)
+  ])
   const result = await queries.getForm(formid);
   return result;
 };

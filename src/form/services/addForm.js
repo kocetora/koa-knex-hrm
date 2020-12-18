@@ -36,11 +36,11 @@ const addForm = async ({
     note,
     isPublic,
   });
-  await queries.addProfessions(id, professions);
-  await queries.addMessengers(id, messengers);
-  await queries.addLanguageSkills(id, languageSkills);
-  const result = await queries.getForm(id);
-  return result;
+  return Promise.all([
+    queries.addProfessions(id, professions),
+    queries.addMessengers(id, messengers),
+    queries.addLanguageSkills(id, languageSkills)
+  ])
 };
 
 module.exports = {
