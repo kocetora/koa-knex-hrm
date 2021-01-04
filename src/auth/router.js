@@ -9,12 +9,12 @@ const router = new Router({
 });
 
 router
-  .post(
-    '/register',
-    validators.user,
-    // validators.role,
-    controllers.register
-  )
+  .post('/register', validators.user, controllers.register)
+  .post('/newadmin', 
+    middlewares.check, 
+    middlewares.isAdmin, 
+    validators.user, 
+    controllers.registerAdmin)
   .post('/login', validators.user, controllers.login)
   .get('/logout', middlewares.check, controllers.logout);
 
