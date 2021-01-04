@@ -18,7 +18,6 @@ router
   )
   .post(
     '/public',
-    middleware.check,
     validators.filter,
     controllers.findPublicForms
   );
