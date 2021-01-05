@@ -1,36 +1,49 @@
 'use strict';
-const { addComment } = require('./addComment');
-const { addForm } = require('./addForm');
-const { addProfessions } = require('./addForm');
-const { addMessengers } = require('./addForm');
-const { addLanguageSkills } = require('./addForm');
+
+const { 
+  addForm,
+  addProfessions,
+  addMessengers,
+  addLanguageSkills, 
+  addImages,
+} = require('./addForm');
+const { 
+  updateForm,
+  updateProfessions,
+  updateMessengers,
+  updateLanguageSkills,
+  updateImages,
+ } = require('./updateForm');
+const { 
+  getForm, 
+  getProfessions, 
+  getMessengers, 
+  getLanguageSkills, 
+  getImages,
+} = require('./getForm');
 const { deleteForm } = require('./deleteForm');
+const { addComment } = require('./addComment');
 const { getComments } = require('./getComments');
-const { updateForm } = require('./updateForm');
-const { updateProfessions } = require('./updateForm');
-const { updateMessengers } = require('./updateForm');
-const { updateLanguageSkills } = require('./updateForm');
-const { getForm } = require('./getForm');
-const { getProfessions } = require('./getForm');
-const { getMessengers } = require('./getForm');
-const { getLanguageSkills } = require('./getForm');
 const { getUser } = require('./getUser');
 
 module.exports = {
-  addComment,
   addForm,
+  addImages,
+  addProfessions,
+  addLanguageSkills,
+  addMessengers,
   updateForm,
   updateProfessions,
   updateLanguageSkills,
   updateMessengers,
-  getComments,
-  deleteForm,
+  updateImages,
   getForm,
   getProfessions,
   getLanguageSkills,
   getMessengers,
-  addProfessions,
-  addLanguageSkills,
-  addMessengers,
+  getImages,
+  deleteForm,
+  addComment,
+  getComments,
   getUser,
 };

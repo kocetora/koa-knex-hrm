@@ -19,6 +19,7 @@ const addForm = async ({
   professions,
   languageSkills,
   isPublic,
+  images,
 }) => {
   const [id] = await queries.addForm({
     name,
@@ -39,7 +40,8 @@ const addForm = async ({
   return Promise.all([
     queries.addProfessions(id, professions),
     queries.addMessengers(id, messengers),
-    queries.addLanguageSkills(id, languageSkills)
+    queries.addLanguageSkills(id, languageSkills),
+    queries.addImages(id, images)
   ])
 };
 
