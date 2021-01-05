@@ -10,6 +10,7 @@ const router = new Router({
 
 router
   .post('/', validators.form, controllers.addForm)
+  .get('/:formid', validators.formid, controllers.getForm)
   .put(
     '/:formid',
     middlewares.check,

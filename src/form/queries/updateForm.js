@@ -36,9 +36,20 @@ const updateMessengers = (formid, messengers) =>
       }
     });
 
+const updateImages = (formid, images) =>
+  knex('images')
+    .where({ formid })
+    .del()
+    .then(async () => {
+      for (const el of images) {
+        await knex('images').insert({ formid, ...el });
+      }
+    });
+
 module.exports = {
   updateForm,
   updateProfessions,
   updateLanguageSkills,
   updateMessengers,
+  updateImages,
 };

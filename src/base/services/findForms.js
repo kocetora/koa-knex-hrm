@@ -234,6 +234,7 @@ const findForms = async (
     el.professions = await queries.getProfessions(el.id);
     el.messengers = await queries.getMessengers(el.id);
     el.languageSkills = await queries.getLanguageSkills(el.id);
+    el.images = await queries.getImages(el.id);
   }
   return forms;
 };

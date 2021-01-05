@@ -20,6 +20,7 @@ const updateForm = async (
     messengers,
     professions,
     languageSkills,
+    images,
   }
 ) => {
   const [form] = await queries.getForm(formid);
@@ -47,7 +48,8 @@ const updateForm = async (
   await Promise.all([
     queries.updateProfessions(formid, professions),
     queries.updateMessengers(formid, messengers),
-    queries.updateLanguageSkills(formid, languageSkills)
+    queries.updateLanguageSkills(formid, languageSkills),
+    queries.updateImages(formid, images)
   ])
   const result = await queries.getForm(formid);
   return result;
