@@ -6,7 +6,10 @@ const addComment = async ctx => {
     const formid = ctx.params.formid;
     const body = ctx.request.body;
     await Services.addComment(formid, body);
-    ctx.body = 'Request processed successfully';
+    ctx.body = {
+      success: true,
+      message: 'Request processed successfully'
+    };
     return ctx;
   } catch (err) {
     return ctx.throw(err.code, err.message);
