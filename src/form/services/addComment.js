@@ -1,7 +1,7 @@
 'use strict';
 const queries = require('../queries/index');
 
-const addComment = async (formid, { userid, comment }) => {
+const addComment = async (formid, { userid, username, comment }) => {
   const [form] = await queries.getForm(formid);
   const [user] = await queries.getUser(userid);
   if (!form || !user) {
@@ -10,7 +10,7 @@ const addComment = async (formid, { userid, comment }) => {
     error.code = 404;
     throw error;
   }
-  await queries.addComment({ userid, formid, comment });
+  await queries.addComment({ userid, username, formid, comment });
 };
 
 module.exports = {

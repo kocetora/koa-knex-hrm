@@ -4,6 +4,7 @@ exports.up = function(knex) {
   return knex.schema.createTable('comments', table => {
     table.increments('id').unsigned().primary();
     table.string('comment').notNullable();
+    table.string('username').notNullable();
     table.integer('userid').unsigned().references('users.id');
     table.integer('formid').unsigned();
     table.timestamp('created_at').defaultTo(knex.fn.now());
