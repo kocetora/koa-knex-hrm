@@ -5,6 +5,7 @@ exports.up = function(knex) {
     table.increments('id').primary();
     table.string('name').notNullable();
     table.string('surname').notNullable();
+    table.string('middlename');
     table.date('born').notNullable();
     table
       .enu('sex', ['male', 'female'], { useNative: true, enumName: 'sex' })

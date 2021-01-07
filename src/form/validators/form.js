@@ -32,37 +32,34 @@ const form = (ctx, next) => {
   if (
     !name ||
     !isLength(name, {
-      min: 2,
       max: 128,
     })
   ) {
     return ctx.throw(
       400,
-      'Incorrect name. Should be longer than 2 and shorter then 128'
+      'Incorrect name. Should be shorter then 128'
     );
   }
   if (
     !surname ||
     !isLength(surname, {
-      min: 2,
       max: 128,
     })
   ) {
     return ctx.throw(
       400,
-      'Incorrect surname. Should be longer than 2 and shorter then 128'
+      'Incorrect surname. Should be shorter then 128'
     );
   }
   if (
     !phoneNumber ||
     !isLength(phoneNumber, {
-      min: 5,
-      max: 20,
+      max: 128,
     })
   ) {
     return ctx.throw(
       400,
-      'Incorrect phoneNumber. Should be longer than 5 and shorter then 20'
+      'Incorrect phoneNumber. Should be shorter then 128'
     );
   }
   if (!born || !isDate(born)) {
@@ -71,7 +68,6 @@ const form = (ctx, next) => {
   if (
     !email ||
     !isEmail(email, {
-      min: 4,
       max: 128,
     })
   ) {
@@ -90,66 +86,93 @@ const form = (ctx, next) => {
   if (!sex || !isIn(sex, ['male', 'female'])) {
     return ctx.throw(400, 'Incorrect sex. May be male or female only');
   }
-  if (
+  if (prefferedRegion === undefined){
+    return next()
+  } else if (
+    prefferedRegion !== undefined &&
+    !isLength(prefferedRegion, {
+      max: 128,
+    })
+  ) {
+    return ctx.throw(
+      400,
+      'Incorrect prefferedRegion. Should be shorter then 128'
+    );
+  }
+  if (middlename === undefined){
+    return next()
+  } else if (
+    middlename !== undefined &&
+    !isLength(middlename, {
+      max: 128,
+    })
+  ) {
+    return ctx.throw(
+      400,
+      'Incorrect middlename. Should be shorter then 128'
+    );
+  }
+  if (note === undefined){
+    return next()
+  } else if (
     note !== undefined &&
     !isLength(note, {
-      min: 1,
       max: 255,
     })
   ) {
     return ctx.throw(
       400,
-      'Incorrect note. Should be longer than 1 and shorter then 255'
+      'Incorrect note. Should be shorter then 255'
     );
   }
   if (
     !height ||
     !isInt(height.toString(), {
-      min: 30,
-      max: 300,
+      min: 0,
+      max: 2147483647,
     })
   ) {
     return ctx.throw(
       400,
-      'Incorrect height. Should be bigger than 30 and less then 300'
+      'Incorrect height. Should be bigger then 0 and less then 2147483647'
     );
   }
   if (
     !expectedSalary ||
     !isInt(expectedSalary.toString(), {
-      min: 1,
+      min: 0,
       max: 2147483647,
     })
   ) {
     return ctx.throw(
       400,
       'Incorrect expectedSalary. Should be bigger than' +
-        ' 1 and less then 2147483647'
+        ' 0 and less then 2147483647'
     );
   }
   if (
     !workExperience ||
     !isInt(workExperience.toString(), {
       min: 0,
-      max: 1211,
+      max: 2147483647,
     })
   ) {
     return ctx.throw(
       400,
       'Incorrect workExperience. Should be bigger than' +
-        ' 1 and less then 2147483647'
+        ' 0 and less then 2147483647'
     );
   }
   if (
     !unemployedFor ||
     !isInt(unemployedFor.toString(), {
       min: 0,
-      max: 1211,
+      max: 2147483647,
     })
   ) {
     return ctx.throw(
       400,
-      'Incorrect unemployedFor. Should be bigger than 1' +
+      'Incorrect unemployedFor. Should be bigger than 0' +
         ' and less then 2147483647'
     );
   }
@@ -159,14 +182,12 @@ const form = (ctx, next) => {
   if (
     prefferedRegion !== undefined &&
     !isLength(prefferedRegion, {
-      min: 1,
       max: 128,
     })
   ) {
     return ctx.throw(
       400,
-      'Incorrect prefferedRegion. Should be longer than' +
-        ' 1 and shorter then 128'
+      'Incorrect prefferedRegion. Should be shorter then 128'
     );
   }
   languageSkills.forEach(el => {
@@ -225,13 +246,12 @@ const form = (ctx, next) => {
     if (
       !el.info ||
       !isLength(el.info, {
-        min: 1,
         max: 128,
       })
     ) {
       return ctx.throw(
         400,
-        'Incorrect info. Should be longer than 1 and shorter then 128'
+        'Incorrect info. Should be shorter then 128'
       );
     }
   });
