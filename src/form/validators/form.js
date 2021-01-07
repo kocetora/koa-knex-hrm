@@ -13,6 +13,7 @@ const form = (ctx, next) => {
   const {
     name,
     surname,
+    middlename,
     born,
     sex,
     height,
