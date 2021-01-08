@@ -58,6 +58,7 @@ const updateForm = async (
     result.messengers = await queries.getMessengers(formid);
     result.languageSkills = await queries.getLanguageSkills(formid);
     result.images = await queries.getImages(formid);
+
   return result;
 };
 

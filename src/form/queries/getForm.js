@@ -13,7 +13,7 @@ const getLanguageSkills = formid =>
 
 const getMessengers = formid =>
   knex('messengers').where({ formid }).select('messenger', 'info');
-  
+
 const getImages = formid =>
   knex('images').where({ formid }).select('avatar', 'primary');
 

@@ -43,8 +43,8 @@ const addForm = async ({
     queries.addProfessions(id, professions),
     queries.addMessengers(id, messengers),
     queries.addLanguageSkills(id, languageSkills),
-    queries.addImages(id, images)
-  ])
+    queries.addImages(id, images),
+  ]);
 };
 
 module.exports = {
