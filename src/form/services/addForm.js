@@ -4,6 +4,7 @@ const queries = require('../queries/index');
 const addForm = async ({
   name,
   surname,
+  middlename,
   born,
   sex,
   height,
@@ -24,6 +25,7 @@ const addForm = async ({
   const [id] = await queries.addForm({
     name,
     surname,
+    middlename,
     born,
     sex,
     height,

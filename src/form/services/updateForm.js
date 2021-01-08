@@ -6,6 +6,7 @@ const updateForm = async (
   {
     name,
     surname,
+    middlename,
     born,
     sex,
     height,
@@ -32,6 +33,7 @@ const updateForm = async (
   await queries.updateForm(formid, {
     name,
     surname,
+    middlename,
     born,
     sex,
     height,
@@ -52,6 +54,10 @@ const updateForm = async (
     queries.updateImages(formid, images)
   ])
   const result = await queries.getForm(formid);
+    result.professions = await queries.getProfessions(formid);
+    result.messengers = await queries.getMessengers(formid);
+    result.languageSkills = await queries.getLanguageSkills(formid);
+    result.images = await queries.getImages(formid);
   return result;
 };
 

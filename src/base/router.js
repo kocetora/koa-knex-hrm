@@ -12,7 +12,6 @@ router
   .post(
     '/',
     middleware.check,
-    middleware.isUser,
     validators.filter,
     controllers.findForms
   )
