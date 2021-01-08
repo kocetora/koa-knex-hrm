@@ -51,13 +51,13 @@ const updateForm = async (
     queries.updateProfessions(formid, professions),
     queries.updateMessengers(formid, messengers),
     queries.updateLanguageSkills(formid, languageSkills),
-    queries.updateImages(formid, images)
-  ])
+    queries.updateImages(formid, images),
+  ]);
   const [result] = await queries.getForm(formid);
-    result.professions = await queries.getProfessions(formid);
-    result.messengers = await queries.getMessengers(formid);
-    result.languageSkills = await queries.getLanguageSkills(formid);
-    result.images = await queries.getImages(formid);
+  result.professions = await queries.getProfessions(formid);
+  result.messengers = await queries.getMessengers(formid);
+  result.languageSkills = await queries.getLanguageSkills(formid);
+  result.images = await queries.getImages(formid);
 
   return result;
 };
