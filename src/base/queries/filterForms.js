@@ -46,12 +46,14 @@ const whereLanguageSkills = (formids, language, languageProficiency) => {
   const minLangLevel = languageProficiencyEnum.slice(
     languageProficiencyEnum.indexOf(languageProficiency)
   );
-  return knex('languageSkills')
-    .whereIn('formid', formids)
-    .where('language', language)
-    .whereIn('languageProficiency', minLangLevel)
-    // .where('languageProficiency', languageProficiency)
-    .select('formid');
+  return (
+    knex('languageSkills')
+      .whereIn('formid', formids)
+      .where('language', language)
+      .whereIn('languageProficiency', minLangLevel)
+      // .where('languageProficiency', languageProficiency)
+      .select('formid')
+  );
 };
 
 const whereProfessions = (formids, professions) =>

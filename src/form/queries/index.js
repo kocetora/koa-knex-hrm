@@ -1,24 +1,24 @@
 'use strict';
 
-const { 
+const {
   addForm,
   addProfessions,
   addMessengers,
-  addLanguageSkills, 
+  addLanguageSkills,
   addImages,
 } = require('./addForm');
-const { 
+const {
   updateForm,
   updateProfessions,
   updateMessengers,
   updateLanguageSkills,
   updateImages,
- } = require('./updateForm');
-const { 
-  getForm, 
-  getProfessions, 
-  getMessengers, 
-  getLanguageSkills, 
+} = require('./updateForm');
+const {
+  getForm,
+  getProfessions,
+  getMessengers,
+  getLanguageSkills,
   getImages,
 } = require('./getForm');
 const { deleteForm } = require('./deleteForm');

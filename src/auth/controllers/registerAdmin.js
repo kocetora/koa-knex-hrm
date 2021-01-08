@@ -6,7 +6,7 @@ const registerAdmin = async ctx => {
     await Services.registerAdmin(ctx.request.body);
     ctx.body = {
       success: true,
-      message: 'Request processed successfully'
+      message: 'Request processed successfully',
     };
   } catch (err) {
     ctx.status = err.code;

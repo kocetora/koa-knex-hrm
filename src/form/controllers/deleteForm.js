@@ -7,7 +7,7 @@ const deleteForm = async ctx => {
     await Services.deleteForm(formid);
     ctx.body = {
       success: true,
-      message: 'Request processed successfully'
+      message: 'Request processed successfully',
     };
     return ctx;
   } catch (err) {

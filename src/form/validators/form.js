@@ -36,10 +36,7 @@ const form = (ctx, next) => {
       max: 128,
     })
   ) {
-    return ctx.throw(
-      400,
-      'Incorrect name. Should be shorter then 128'
-    );
+    return ctx.throw(400, 'Incorrect name. Should be shorter then 128');
   }
   if (
     !surname ||
@@ -47,10 +44,7 @@ const form = (ctx, next) => {
       max: 128,
     })
   ) {
-    return ctx.throw(
-      400,
-      'Incorrect surname. Should be shorter then 128'
-    );
+    return ctx.throw(400, 'Incorrect surname. Should be shorter then 128');
   }
   if (
     !phoneNumber ||
@@ -58,10 +52,7 @@ const form = (ctx, next) => {
       max: 128,
     })
   ) {
-    return ctx.throw(
-      400,
-      'Incorrect phoneNumber. Should be shorter then 128'
-    );
+    return ctx.throw(400, 'Incorrect phoneNumber. Should be shorter then 128');
   }
   if (!born || !isDate(born)) {
     return ctx.throw(400, 'Incorrect born date. Should be YYYY-MM-DD');
@@ -87,8 +78,8 @@ const form = (ctx, next) => {
   if (!sex || !isIn(sex, ['male', 'female'])) {
     return ctx.throw(400, 'Incorrect sex. May be male or female only');
   }
-  if (prefferedRegion === undefined){
-    return next()
+  if (prefferedRegion === undefined) {
+    return next();
   } else if (
     prefferedRegion !== undefined &&
     !isLength(prefferedRegion, {
@@ -100,31 +91,25 @@ const form = (ctx, next) => {
       'Incorrect prefferedRegion. Should be shorter then 128'
     );
   }
-  if (middlename === undefined){
-    return next()
+  if (middlename === undefined) {
+    return next();
   } else if (
     middlename !== undefined &&
     !isLength(middlename, {
       max: 128,
     })
   ) {
-    return ctx.throw(
-      400,
-      'Incorrect middlename. Should be shorter then 128'
-    );
+    return ctx.throw(400, 'Incorrect middlename. Should be shorter then 128');
   }
-  if (note === undefined){
-    return next()
+  if (note === undefined) {
+    return next();
   } else if (
     note !== undefined &&
     !isLength(note, {
       max: 255,
     })
   ) {
-    return ctx.throw(
-      400,
-      'Incorrect note. Should be shorter then 255'
-    );
+    return ctx.throw(400, 'Incorrect note. Should be shorter then 255');
   }
   if (
     !height ||
@@ -250,10 +235,7 @@ const form = (ctx, next) => {
         max: 128,
       })
     ) {
-      return ctx.throw(
-        400,
-        'Incorrect info. Should be shorter then 128'
-      );
+      return ctx.throw(400, 'Incorrect info. Should be shorter then 128');
     }
   });
 
