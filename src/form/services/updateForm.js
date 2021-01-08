@@ -53,7 +53,7 @@ const updateForm = async (
     queries.updateLanguageSkills(formid, languageSkills),
     queries.updateImages(formid, images)
   ])
-  const result = await queries.getForm(formid);
+  const [result] = await queries.getForm(formid);
     result.professions = await queries.getProfessions(formid);
     result.messengers = await queries.getMessengers(formid);
     result.languageSkills = await queries.getLanguageSkills(formid);
