@@ -8,7 +8,7 @@ const addComment = async ctx => {
     await Services.addComment(formid, body);
     ctx.body = {
       success: true,
-      message: 'Request processed successfully'
+      message: 'Request processed successfully',
     };
     return ctx;
   } catch (err) {

@@ -27,7 +27,7 @@ const addMessengers = (formid, messengers) =>
     }
   });
 
-const addImages = (formid, images) => 
+const addImages = (formid, images) =>
   knex('images').then(async () => {
     for (const el of images) {
       await knex('images').insert({ formid, ...el });

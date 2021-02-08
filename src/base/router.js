@@ -16,10 +16,6 @@ router
     validators.filter,
     controllers.findForms
   )
-  .post(
-    '/public',
-    validators.filter,
-    controllers.findPublicForms
-  );
+  .post('/public', validators.filter, controllers.findPublicForms);
 
 module.exports = router;
