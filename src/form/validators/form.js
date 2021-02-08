@@ -140,26 +140,26 @@ const form = (ctx, next) => {
     !workExperience ||
     !isInt(workExperience.toString(), {
       min: 0,
-      max: 2147483647,
+      max: 1211,
     })
   ) {
     return ctx.throw(
       400,
       'Incorrect workExperience. Should be bigger than' +
-        ' 0 and less then 2147483647'
+        ' 0 and less then 1211'
     );
   }
   if (
     !unemployedFor ||
     !isInt(unemployedFor.toString(), {
       min: 0,
-      max: 2147483647,
+      max: 1211,
     })
   ) {
     return ctx.throw(
       400,
       'Incorrect unemployedFor. Should be bigger than 0' +
-        ' and less then 2147483647'
+        ' and less then 1211'
     );
   }
   if (isPublic !== undefined && !isBoolean(isPublic.toString())) {

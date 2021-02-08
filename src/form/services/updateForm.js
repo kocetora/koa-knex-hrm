@@ -22,6 +22,7 @@ const updateForm = async (
     professions,
     languageSkills,
     images,
+    isPublic
   }
 ) => {
   const [form] = await queries.getForm(formid);
@@ -45,6 +46,7 @@ const updateForm = async (
     workExperience,
     unemployedFor,
     note,
+    isPublic,
     updated_at: new Date(),
   });
   await Promise.all([

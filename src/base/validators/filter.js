@@ -20,14 +20,14 @@ const filter = async (ctx, next) => {
   if (
     expectedSalary &&
     !isInt(expectedSalary.toString(), {
-      min: 1,
-      max: 100000,
+      min: 0,
+      max: 2147483647,
     })
   ) {
     return ctx.throw(
       400,
       'Incorrect expectedSalary. Should be bigger than ' +
-        '1 and less then 100000'
+        '0 and less then 2147483647'
     );
   }
 
@@ -38,13 +38,12 @@ const filter = async (ctx, next) => {
   if (
     phoneNumber &&
     !isLength(phoneNumber, {
-      min: 5,
-      max: 20,
+      max: 128,
     })
   ) {
     return ctx.throw(
       400,
-      'Incorrect phoneNumber. Should be longer than 5 and shorter then 20'
+      'Incorrect phoneNumber. Should be shorter then 128'
     );
   }
 
@@ -69,7 +68,7 @@ const filter = async (ctx, next) => {
     ) {
       return ctx.throw(
         400,
-        'Undefined from or to field. Should be bigger than 30 and less then 300'
+        'Undefined from or to field. Should be bigger than 0 and less then 2147483647'
       );
     }
     for (const key in height[0]) {
@@ -78,13 +77,13 @@ const filter = async (ctx, next) => {
         if (
           !el ||
           !isInt(el.toString(), {
-            min: 30,
-            max: 300,
+            min: 0,
+            max: 2147483647,
           })
         ) {
           return ctx.throw(
             400,
-            'Incorrect height. Should be bigger than 30 and less then 300'
+            'Incorrect height. Should be bigger than 0 and less then 2147483647'
           );
         }
       }
@@ -98,7 +97,7 @@ const filter = async (ctx, next) => {
     ) {
       return ctx.throw(
         400,
-        'Undefined from or to field. Should be bigger than 1 and less then 150'
+        'Undefined from or to field. Should be bigger than 0 and less then 2147483647'
       );
     }
     for (const key in age[0]) {
@@ -107,13 +106,13 @@ const filter = async (ctx, next) => {
         if (
           !el ||
           !isInt(el.toString(), {
-            min: 1,
-            max: 150,
+            min: 0,
+            max: 2147483647,
           })
         ) {
           return ctx.throw(
             400,
-            'Incorrect age. Should be bigger than 1 and less then 150'
+            'Incorrect age. Should be bigger than 0 and less then 2147483647'
           );
         }
       }
