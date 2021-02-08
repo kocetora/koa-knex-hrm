@@ -6,7 +6,7 @@ const addForm = async ctx => {
     await Services.addForm(ctx.request.body);
     ctx.body = {
       success: true,
-      message: 'Request processed successfully',
+      message: 'Request processed successfully'
     };
     return ctx;
   } catch (err) {

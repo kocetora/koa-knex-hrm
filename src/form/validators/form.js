@@ -140,7 +140,7 @@ const form = (ctx, next) => {
     !workExperience ||
     !isInt(workExperience.toString(), {
       min: 0,
-      max: 1211,
+      max: 2147483647,
     })
   ) {
     return ctx.throw(
@@ -153,7 +153,7 @@ const form = (ctx, next) => {
     !unemployedFor ||
     !isInt(unemployedFor.toString(), {
       min: 0,
-      max: 1211,
+      max: 2147483647,
     })
   ) {
     return ctx.throw(

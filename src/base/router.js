@@ -9,7 +9,17 @@ const router = new Router({
 });
 
 router
-  .post('/', middleware.check, validators.filter, controllers.findForms)
-  .post('/public', validators.filter, controllers.findPublicForms);
+  .post(
+    '/',
+    middleware.check,
+    middleware.isUser,
+    validators.filter,
+    controllers.findForms
+  )
+  .post(
+    '/public',
+    validators.filter,
+    controllers.findPublicForms
+  );
 
 module.exports = router;

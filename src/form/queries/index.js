@@ -1,13 +1,13 @@
 'use strict';
 
-const {
+const { 
   addForm,
   addProfessions,
   addMessengers,
-  addLanguageSkills,
+  addLanguageSkills, 
   addImages,
 } = require('./addForm');
-const {
+const { 
   updateForm,
   updateProfessions,
   updateMessengers,

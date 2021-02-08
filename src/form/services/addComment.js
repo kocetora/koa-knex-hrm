@@ -1,7 +1,7 @@
 'use strict';
 const queries = require('../queries/index');
 
-const addComment = async (formid, { userid, comment }) => {
+const addComment = async (formid, { userid, username, comment }) => {
   const [form] = await queries.getForm(formid);
   const [user] = await queries.getUser(userid);
   const username = user.username;
