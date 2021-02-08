@@ -1,6 +1,6 @@
 'use strict';
 
-const logout = async ctx => {
+const logout = async (ctx) => {
   try {
     // TODO: jwt and session
     ctx.body = {

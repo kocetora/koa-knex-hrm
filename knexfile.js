@@ -13,7 +13,7 @@ module.exports = {
       directory: __dirname + '/src/db/migrations',
     },
     seeds: {
-      directory: __dirname + '/src/db/seeds',
+      directory: __dirname + '/src/db/seeds/test',
     },
   },
   production: {
@@ -23,7 +23,7 @@ module.exports = {
       directory: __dirname + '/src/db/migrations',
     },
     seeds: {
-      directory: __dirname + '/src/db/seeds',
+      directory: __dirname + '/src/db/seeds/prod',
     },
   },
 };

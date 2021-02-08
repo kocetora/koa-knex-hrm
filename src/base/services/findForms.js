@@ -32,8 +32,8 @@ const findForms = async (
     }
 
     run(arg) {
-      return new Promise(resolve => {
-        arg.then(newArg => {
+      return new Promise((resolve) => {
+        arg.then((newArg) => {
           const obj = this.conditions.shift();
           if (obj) {
             resolve(this.run(obj.fn(newArg, obj.condition)));
@@ -148,7 +148,7 @@ const findForms = async (
     if (professions && professions[0]) {
       const ids = await queries.whereProfessions(
         formidsToArray(formids),
-        Array.from(professions, el => el.profession)
+        Array.from(professions, (el) => el.profession)
       );
       return ids;
     } else {
@@ -160,7 +160,7 @@ const findForms = async (
     if (messengers && messengers[0]) {
       const ids = await queries.whereMessengers(
         formidsToArray(formids),
-        Array.from(messengers, el => el.messenger)
+        Array.from(messengers, (el) => el.messenger)
       );
       return ids;
     } else {
@@ -194,9 +194,9 @@ const findForms = async (
 
   function formidsToArray(formids) {
     if (formids[0] && formids[0].formid) {
-      return Array.from(formids, el => el.formid);
+      return Array.from(formids, (el) => el.formid);
     } else if (formids[0] && formids[0].id) {
-      return Array.from(formids, el => el.id);
+      return Array.from(formids, (el) => el.id);
     } else {
       return formids;
     }

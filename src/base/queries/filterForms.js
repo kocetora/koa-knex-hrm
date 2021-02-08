@@ -3,7 +3,7 @@ const knex = require('../../db/knex');
 
 const getFormIds = () => knex('forms').select('id');
 
-const getFormsById = formids => knex('forms').whereIn('id', formids).select();
+const getFormsById = (formids) => knex('forms').whereIn('id', formids).select();
 
 const whereSex = (formids, sex) =>
   knex('forms').whereIn('id', formids).where('sex', sex).select('id');

@@ -134,7 +134,7 @@ const filter = async (ctx, next) => {
   }
 
   if (professions && professions[0]) {
-    professions.forEach(obj => {
+    professions.forEach((obj) => {
       if (Object.getOwnPropertyNames(obj)[0] !== 'profession') {
         return ctx.throw(
           400,
@@ -163,7 +163,7 @@ const filter = async (ctx, next) => {
   }
 
   if (messengers && messengers[0]) {
-    messengers.forEach(obj => {
+    messengers.forEach((obj) => {
       if (Object.getOwnPropertyNames(obj)[0] !== 'messenger') {
         return ctx.throw(
           400,
@@ -180,7 +180,7 @@ const filter = async (ctx, next) => {
   }
 
   if (languageSkills && languageSkills[0]) {
-    languageSkills.forEach(obj => {
+    languageSkills.forEach((obj) => {
       if (
         Object.getOwnPropertyNames(obj)[0] !== 'language' &&
         Object.getOwnPropertyNames(obj)[1] !== 'language'
