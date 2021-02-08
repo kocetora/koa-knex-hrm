@@ -22,7 +22,7 @@ const updateForm = async (
     professions,
     languageSkills,
     images,
-    isPublic
+    isPublic,
   }
 ) => {
   const [form] = await queries.getForm(formid);

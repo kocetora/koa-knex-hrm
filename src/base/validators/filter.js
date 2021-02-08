@@ -41,10 +41,7 @@ const filter = async (ctx, next) => {
       max: 128,
     })
   ) {
-    return ctx.throw(
-      400,
-      'Incorrect phoneNumber. Should be shorter then 128'
-    );
+    return ctx.throw(400, 'Incorrect phoneNumber. Should be shorter then 128');
   }
 
   if (
@@ -68,7 +65,8 @@ const filter = async (ctx, next) => {
     ) {
       return ctx.throw(
         400,
-        'Undefined from or to field. Should be bigger than 0 and less then 2147483647'
+        'Undefined from or to field. Should be bigger than 0' +
+          ' and less then 2147483647'
       );
     }
     for (const key in height[0]) {
@@ -97,7 +95,8 @@ const filter = async (ctx, next) => {
     ) {
       return ctx.throw(
         400,
-        'Undefined from or to field. Should be bigger than 0 and less then 2147483647'
+        'Undefined from or to field. Should be bigger than 0' +
+          ' and less then 2147483647'
       );
     }
     for (const key in age[0]) {

@@ -158,8 +158,8 @@ const form = (ctx, next) => {
   ) {
     return ctx.throw(
       400,
-      'Incorrect unemployedFor. Should be bigger than 0' +
-        ' and less then 1211'
+      'Incorrect unemployedFor. Should be bigger than 0' + 
+      ' and less then 1211'
     );
   }
   if (isPublic !== undefined && !isBoolean(isPublic.toString())) {
