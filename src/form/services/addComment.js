@@ -4,6 +4,7 @@ const queries = require('../queries/index');
 const addComment = async (formid, { userid, username, comment }) => {
   const [form] = await queries.getForm(formid);
   const [user] = await queries.getUser(userid);
+  const username = user.username;
   if (!form || !user) {
     const record = form ? 'User' : 'Form';
     const error = new Error(record + ' with this id doesn\'t exist');

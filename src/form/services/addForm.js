@@ -4,6 +4,7 @@ const queries = require('../queries/index');
 const addForm = async ({
   name,
   surname,
+  middlename,
   born,
   sex,
   height,
@@ -24,6 +25,7 @@ const addForm = async ({
   const [id] = await queries.addForm({
     name,
     surname,
+    middlename,
     born,
     sex,
     height,
@@ -41,8 +43,8 @@ const addForm = async ({
     queries.addProfessions(id, professions),
     queries.addMessengers(id, messengers),
     queries.addLanguageSkills(id, languageSkills),
-    queries.addImages(id, images)
-  ])
+    queries.addImages(id, images),
+  ]);
 };
 
 module.exports = {

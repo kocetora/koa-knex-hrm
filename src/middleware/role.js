@@ -17,7 +17,7 @@ const isUser = (ctx, next) => {
   if (auth.decodeToken(token).role !== ('admin' || 'user'))
     return ctx.throw(
       403,
-      'Access denied. You must have admin rights to do this.'
+      'Access denied. You must have user rights to do this.'
     );
 
   return next();

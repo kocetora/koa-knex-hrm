@@ -17,7 +17,6 @@ const getMessengers = formid =>
 const getImages = formid =>
   knex('images').where({ formid }).select('avatar', 'primary');
 
-
 module.exports = {
   getForms,
   getProfessions,

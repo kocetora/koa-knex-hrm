@@ -1,12 +1,13 @@
 'use strict';
-const { 
+
+const {
   getForms,
   getProfessions,
   getLanguageSkills,
   getMessengers,
-  getImages, 
+  getImages,
 } = require('./getForms');
-const { 
+const {
   getFormIds,
   getFormsById,
   whereSex,
@@ -22,7 +23,6 @@ const {
   whereMessengers,
   whereSubmitted,
 } = require('./filterForms');
-
 
 module.exports = {
   getForms,

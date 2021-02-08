@@ -21,6 +21,7 @@ router
   .delete(
     '/:formid',
     middlewares.check,
+    middlewares.isAdmin,
     validators.formid,
     controllers.deleteForm
   )

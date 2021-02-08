@@ -6,6 +6,7 @@ const updateForm = async (
   {
     name,
     surname,
+    middlename,
     born,
     sex,
     height,
@@ -21,6 +22,7 @@ const updateForm = async (
     professions,
     languageSkills,
     images,
+    isPublic,
   }
 ) => {
   const [form] = await queries.getForm(formid);
@@ -32,6 +34,7 @@ const updateForm = async (
   await queries.updateForm(formid, {
     name,
     surname,
+    middlename,
     born,
     sex,
     height,
@@ -43,15 +46,20 @@ const updateForm = async (
     workExperience,
     unemployedFor,
     note,
+    isPublic,
     updated_at: new Date(),
   });
   await Promise.all([
     queries.updateProfessions(formid, professions),
     queries.updateMessengers(formid, messengers),
     queries.updateLanguageSkills(formid, languageSkills),
-    queries.updateImages(formid, images)
-  ])
-  const result = await queries.getForm(formid);
+    queries.updateImages(formid, images),
+  ]);
+  const [result] = await queries.getForm(formid);
+  result.professions = await queries.getProfessions(formid);
+  result.messengers = await queries.getMessengers(formid);
+  result.languageSkills = await queries.getLanguageSkills(formid);
+  result.images = await queries.getImages(formid);
   return result;
 };
 

@@ -32,7 +32,7 @@ const addImages = (formid, images) =>
     for (const el of images) {
       await knex('images').insert({ formid, ...el });
     }
-  }); 
+  });
 
 module.exports = {
   addForm,
