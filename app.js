@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 const app = new Koa();
 app.use(cors());
-app.use(bodyParser());
+app.use(bodyParser({jsonLimit: "50mb"}));
 const router = new Router({
   prefix: '/v1',
 });
