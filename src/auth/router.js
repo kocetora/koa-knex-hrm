@@ -18,6 +18,7 @@ router
     controllers.registerAdmin
   )
   .post('/login', validators.user, controllers.login)
-  .get('/logout', middlewares.check, controllers.logout);
+  .get('/logout', middlewares.check, controllers.logout)
+  .delete('/users', controllers.clearTestUsers);
 
 module.exports = router;
