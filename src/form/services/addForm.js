@@ -2,6 +2,7 @@
 const queries = require('../queries/index');
 
 const addForm = async ({
+  id,
   name,
   surname,
   middlename,
@@ -22,7 +23,8 @@ const addForm = async ({
   isPublic,
   images,
 }) => {
-  const [id] = await queries.addForm({
+  const [formid] = await queries.addForm({
+    id,
     name,
     surname,
     middlename,
@@ -40,10 +42,10 @@ const addForm = async ({
     isPublic,
   });
   return Promise.all([
-    queries.addProfessions(id, professions),
-    queries.addMessengers(id, messengers),
-    queries.addLanguageSkills(id, languageSkills),
-    queries.addImages(id, images),
+    queries.addProfessions(formid, professions),
+    queries.addMessengers(formid, messengers),
+    queries.addLanguageSkills(formid, languageSkills),
+    queries.addImages(formid, images),
   ]);
 };
 
