@@ -1,5 +1,5 @@
 'use strict';
-// eslint-disable-next-line
+/* eslint-disable */
 const app = require('../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -10,14 +10,14 @@ const knex = require('../src/db/knex');
 const { expect } = require('chai');
 
 describe('DELETE FORM', () => {
-  before(done => {
+  before((done) => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
       .then(() => done());
   });
 
-  it('200 SUCCESS', done => {
+  it('200 SUCCESS', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .delete('/form/2147483646')
@@ -31,7 +31,7 @@ describe('DELETE FORM', () => {
       });
   });
 
-  it('404 form not found', done => {
+  it('404 form not found', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .delete('/form/19490')
@@ -40,7 +40,7 @@ describe('DELETE FORM', () => {
       .send()
       .end((error, res) => {
         expect(res).to.have.status(404);
-        expect(res.text).equals('Form with this id doesn\'t exist');
+        expect(res.text).equals("Form with this id doesn't exist");
         done();
       });
   });

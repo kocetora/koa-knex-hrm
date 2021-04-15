@@ -1,5 +1,5 @@
 'use strict';
-// eslint-disable-next-line
+/* eslint-disable */
 const app = require('../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -10,14 +10,14 @@ const knex = require('../src/db/knex');
 const { expect } = require('chai');
 
 describe('REGISTER', () => {
-  before(done => {
+  before((done) => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
       .then(() => done());
   });
 
-  it('200 SUCCESS', done => {
+  it('200 SUCCESS', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .post('/auth/register')
@@ -28,13 +28,18 @@ describe('REGISTER', () => {
         password: '12387324',
       })
       .end((error, res) => {
-        expect(res.text).equals('Request processed successfully');
+        expect(res.text).equals(
+          JSON.stringify({
+            success: true,
+            message: 'Request processed successfully',
+          })
+        );
         expect(res.statusCode).to.equal(200);
         done();
       });
   });
 
-  it('400 shorter length username', done => {
+  it('400 shorter length username', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .post('/auth/register')
@@ -53,7 +58,7 @@ describe('REGISTER', () => {
       });
   });
 
-  it('400 Bigger length password', done => {
+  it('400 Bigger length password', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .post('/auth/register')
@@ -72,7 +77,7 @@ describe('REGISTER', () => {
       });
   });
 
-  it('409 Username is taken', done => {
+  it('409 Username is taken', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .post('/auth/register')

@@ -1,5 +1,5 @@
 'use strict';
-// eslint-disable-next-line
+/* eslint-disable */
 const app = require('../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -10,14 +10,14 @@ const knex = require('../src/db/knex');
 const { expect } = require('chai');
 
 describe('GET FORM', () => {
-  before(done => {
+  before((done) => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
       .then(() => done());
   });
 
-  it('200 SUCCESS', done => {
+  it('200 SUCCESS', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .get('/form/2147483646')
@@ -33,8 +33,11 @@ describe('GET FORM', () => {
         );
         expect(res.body).to.have.all.keys(
           'id',
+          'images',
+          'isPublic',
           'name',
           'surname',
+          'middlename',
           'born',
           'sex',
           'height',
@@ -57,7 +60,7 @@ describe('GET FORM', () => {
       });
   });
 
-  it('404 form not found', done => {
+  it('404 form not found', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .get('/form/4383991')
@@ -65,7 +68,7 @@ describe('GET FORM', () => {
       .set('content-type', 'application/json')
       .send()
       .end((error, res) => {
-        expect(res.text).equals('Form with this id doesn\'t exist');
+        expect(res.text).equals("Form with this id doesn't exist");
         expect(res).to.have.status(404);
         done();
       });

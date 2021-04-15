@@ -20,7 +20,7 @@ const login = async ({ username, password }) => {
       throw error;
     }
   } else {
-    const error = new Error("User with this username doesn't exist");
+    const error = new Error('User with this username doesn\'t exist');
     error.code = 404;
     throw error;
   }

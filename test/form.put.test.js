@@ -1,5 +1,5 @@
 'use strict';
-// eslint-disable-next-line
+/* eslint-disable */
 const app = require('../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -50,13 +50,13 @@ const incorrectForm = {
 };
 
 describe('UPDATE FORM', () => {
-  before(done => {
+  before((done) => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
       .then(() => done());
   });
-  it('200 successfully updated form', done => {
+  it('200 successfully updated form', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .put('/form/2147483646')
@@ -68,7 +68,7 @@ describe('UPDATE FORM', () => {
         done();
       });
   });
-  it('404 not found form', done => {
+  it('404 not found form', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .put('/form/9432844')
@@ -76,12 +76,12 @@ describe('UPDATE FORM', () => {
       .set('content-type', 'application/json')
       .send(form)
       .end((error, res) => {
-        expect(res.text).equals('Form with this id doesn\'t exist');
+        expect(res.text).equals("Form with this id doesn't exist");
         expect(res).to.have.status(404);
         done();
       });
   });
-  it('400 bad data form', done => {
+  it('400 bad data form', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .put('/form/9432844')

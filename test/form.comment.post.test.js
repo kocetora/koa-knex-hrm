@@ -1,5 +1,5 @@
 'use strict';
-// eslint-disable-next-line
+/* eslint-disable */
 const app = require('../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -34,13 +34,13 @@ const unexistComment = {
 };
 
 describe('POST COMMENT', () => {
-  before(done => {
+  before((done) => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
       .then(() => done());
   });
-  it('200 successfully posted comment', done => {
+  it('200 successfully posted comment', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
@@ -53,7 +53,7 @@ describe('POST COMMENT', () => {
         done();
       });
   });
-  it('404 not found form', done => {
+  it('404 not found form', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2843299/comment')
@@ -61,12 +61,12 @@ describe('POST COMMENT', () => {
       .set('content-type', 'application/json')
       .send(comment)
       .end((error, res) => {
-        expect(res.text).equals('Form with this id doesn\'t exist');
+        expect(res.text).equals("Form with this id doesn't exist");
         expect(res).to.have.status(404);
         done();
       });
   });
-  it('404 not found user', done => {
+  it('404 not found user', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
@@ -74,12 +74,12 @@ describe('POST COMMENT', () => {
       .set('content-type', 'application/json')
       .send(unexistComment)
       .end((error, res) => {
-        expect(res.text).equals('User with this id doesn\'t exist');
+        expect(res.text).equals("User with this id doesn't exist");
         expect(res).to.have.status(404);
         done();
       });
   });
-  it('400 incorect user id', done => {
+  it('400 incorect user id', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
@@ -94,7 +94,7 @@ describe('POST COMMENT', () => {
         done();
       });
   });
-  it('400 incorrect comment', done => {
+  it('400 incorrect comment', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
@@ -109,7 +109,7 @@ describe('POST COMMENT', () => {
         done();
       });
   });
-  it('400 incorrect formid', done => {
+  it('400 incorrect formid', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .post('/form/2843299u/comment')

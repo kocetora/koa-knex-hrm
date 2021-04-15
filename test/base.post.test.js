@@ -1,5 +1,5 @@
 'use strict';
-// eslint-disable-next-line
+/* eslint-disable */
 const app = require('../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -9,21 +9,23 @@ chai.use(chaiMatchPattern);
 const knex = require('../src/db/knex');
 const { expect } = require('chai');
 
-describe('GET FORMS', () => {
-  before(done => {
+describe('POST BASE', () => {
+  before((done) => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
       .then(() => done());
   });
-  it('200 SUCCESS', done => {
+
+  it('200 SUCCESS', (done) => {
     chai
       .request('http://localhost:3000/v1')
-      .get('/base/')
+      .post('/base/public')
       .type('form')
       .set('content-type', 'application/json')
       .send()
       .end((error, res) => {
+        console.log(res.body);
         expect(res.body[0].messengers[0]).to.have.all.keys('messenger', 'info');
         expect(res.body[0].professions[0]).to.have.all.keys('profession');
         expect(res.body[0].languageSkills[0]).to.have.all.keys(
@@ -32,8 +34,11 @@ describe('GET FORMS', () => {
         );
         expect(res.body[0]).to.have.all.keys(
           'id',
+          'images',
+          'isPublic',
           'name',
           'surname',
+          'middlename',
           'born',
           'sex',
           'height',

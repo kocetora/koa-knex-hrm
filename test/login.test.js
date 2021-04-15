@@ -1,5 +1,5 @@
 'use strict';
-// eslint-disable-next-line
+/* eslint-disable */
 const app = require('../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 chai.use(chaiMatchPattern);
 
 describe('LOGIN', () => {
-  it('LOGIN CORRECT DATA 200', done => {
+  it('LOGIN CORRECT DATA 200', (done) => {
     chai
       .request('http://localhost:3000/v1')
       .post('/login')

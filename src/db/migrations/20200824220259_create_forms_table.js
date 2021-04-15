@@ -1,7 +1,7 @@
 'use strict';
 
-exports.up = function (knex) {
-  return knex.schema.createTable('forms', (table) => {
+exports.up = function(knex) {
+  return knex.schema.createTable('forms', table => {
     table.increments('id').primary();
     table.string('name').notNullable();
     table.string('surname').notNullable();
@@ -31,6 +31,6 @@ exports.up = function (knex) {
   });
 };
 
-exports.down = function (knex) {
+exports.down = function(knex) {
   return knex.schema.dropTable('forms').raw('DROP TYPE sex, education_grade');
 };

@@ -1,13 +1,14 @@
 'use strict';
 const Services = require('../services/index');
 
-const clearTestUsers = async (ctx) => {
+const clearTestUsers = async ctx => {
   try {
     const user = await Services.clearTestUsers(ctx.request.body);
+    console.log(user);
     ctx.body = {
-        success: true,
-        message: 'Request processed successfully',
-      };
+      success: true,
+      message: 'Request processed successfully',
+    };
   } catch (err) {
     ctx.throw(400, err);
   }
