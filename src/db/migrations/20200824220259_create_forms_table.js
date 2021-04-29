@@ -26,8 +26,8 @@ exports.up = function(knex) {
     table.integer('unemployedFor').notNullable();
     table.text('note');
     table.boolean('isPublic').notNullable();
-    table.timestamp('created_at').defaultTo(knex.fn.now());
-    table.timestamp('updated_at').nullable();
+    table.date('created_at').defaultTo(knex.fn.now());
+    table.date('updated_at').nullable();
   });
 };
 
