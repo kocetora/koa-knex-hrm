@@ -10,7 +10,7 @@ const knex = require('../src/db/knex');
 const { expect } = require('chai');
 
 describe('REGISTER', () => {
-  before((done) => {
+  beforeAll((done) => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())

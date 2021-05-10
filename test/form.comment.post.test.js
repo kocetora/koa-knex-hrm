@@ -34,7 +34,7 @@ const unexistComment = {
 };
 
 describe('POST COMMENT', () => {
-  before((done) => {
+  beforeAll((done) => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
