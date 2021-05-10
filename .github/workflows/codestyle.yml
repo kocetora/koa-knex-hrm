@@ -1,35 +1,35 @@
-name: Lint
+# name: Lint
 
-on:
-  push:
-  pull_request:
-    branches: [master]
-    types: [opened, edited]
+# on:
+#   push:
+#   pull_request:
+#     branches: [master]
+#     types: [opened, edited]
 
-jobs:
-  run-linters:
-    name: Run linters
-    runs-on: ubuntu-latest
+# jobs:
+#   run-linters:
+#     name: Run linters
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Check out Git repository
+#         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: 12
 
-      - name: Install Node.js dependencies
-        run: npm i
+#       - name: Install Node.js dependencies
+#         run: npm i
 
-      - name: Run linters
-        uses: wearerequired/lint-action@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          commit_message: 'fix: code style issues with ${linter}'
-          prettier: true
-          prettier_extensions: js,json,ts
-          prettier_args: '--write'
-          eslint: true
-          eslint_args: '--fix'
+#       - name: Run linters
+#         uses: wearerequired/lint-action@v1
+#         with:
+#           github_token: ${{ secrets.github_token }}
+#           commit_message: 'fix: code style issues with ${linter}'
+#           prettier: true
+#           prettier_extensions: js,json,ts
+#           prettier_args: '--write'
+#           eslint: true
+#           eslint_args: '--fix'
