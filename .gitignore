@@ -5,3 +5,4 @@
 .stryker-tmp
 /reports/
 stryker.log
+/mochawesome-report/
