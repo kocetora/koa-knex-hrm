@@ -54,4 +54,4 @@ jobs:
           knex seed:run
           npm test
 #         env:
-          CI: true  
+#           CI: true  
