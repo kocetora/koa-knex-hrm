@@ -49,7 +49,7 @@ jobs:
           PGPASSWORD: 30918
       - name: Install, build, test
         run: |
-          npm install
-          npm test
+          npm i
+          npm run test
 #         env:
 #           CI: true  
