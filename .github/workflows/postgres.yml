@@ -47,3 +47,11 @@ jobs:
           # postgress password is required; alternatively, you can run:
           # `PGPASSWORD=postgres_password psql ...`
           PGPASSWORD: 30918
+      - name: Install, build, test
+        run: |
+          npm install
+          knex migrate:latest
+          knex seed:run
+          npm test
+#         env:
+          CI: true  
