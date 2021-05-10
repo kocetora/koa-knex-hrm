@@ -50,8 +50,6 @@ jobs:
       - name: Install, build, test
         run: |
           npm install
-          npx knex migrate:latest
-          npx knex seed:run
           npm test
 #         env:
 #           CI: true  
