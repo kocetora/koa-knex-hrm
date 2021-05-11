@@ -51,9 +51,5 @@ jobs:
       - uses: bahmutov/npm-install@v1
       - run: npm t
         env:
-          POSTGRES_HOST: postgres
-          POSTGRES_DB: form_manager
-          POSTGRES_PASSWORD: 30918
-          POSTGRES_PORT: 5432
-          POSTGRES_USER: postgres
           NODE_ENV: ci
+          DATABASE_URL: postgres://postgres:30918@postgres:5432/form_manager
