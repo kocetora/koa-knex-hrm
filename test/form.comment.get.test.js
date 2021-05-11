@@ -14,11 +14,10 @@ const user = {
   id: 2147483645,
   username: 'login1',
   role: 'user',
-  password: 'password'
+  password: 'password',
 };
 
 const token = auth.getToken(user.id, user.username, user.role);
-
 
 describe('GET COMMENT', () => {
   beforeAll((done) => {
@@ -32,8 +31,10 @@ describe('GET COMMENT', () => {
       .request('http://localhost:3000/v1')
       .get('/form/2147483646/comment')
       .type('form')
-      .set({"content-type": 'application/json', 
-            "Authorization": `Bearer ${token}` })
+      .set({
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      })
       .send()
       .end((error, res) => {
         expect(res.body[0]).to.have.all.keys(
@@ -52,8 +53,10 @@ describe('GET COMMENT', () => {
       .request('http://localhost:3000/v1')
       .get('/form/78423/comment')
       .type('form')
-      .set({"content-type": 'application/json', 
-            "Authorization": `Bearer ${token}` })
+      .set({
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      })
       .send()
       .end((error, res) => {
         expect(res.text).equals("Form with this id doesn't exist");

@@ -15,7 +15,7 @@ const user = {
   id: 2147483645,
   username: 'login1',
   role: 'user',
-  password: 'password'
+  password: 'password',
 };
 
 const token = auth.getToken(user.id, user.username, user.role);
@@ -57,8 +57,10 @@ describe('POST COMMENT', () => {
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
       .type('form')
-      .set({"content-type": 'application/json', 
-            "Authorization": `Bearer ${token}` })
+      .set({
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      })
       .send(comment)
       .end((error, res) => {
         expect(res.text).equals(
@@ -77,8 +79,10 @@ describe('POST COMMENT', () => {
       .request('http://localhost:3000/v1')
       .post('/form/2843299/comment')
       .type('form')
-      .set({"content-type": 'application/json', 
-            "Authorization": `Bearer ${token}` })
+      .set({
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      })
       .send(comment)
       .end((error, res) => {
         expect(res.text).equals("Form with this id doesn't exist");
@@ -92,8 +96,10 @@ describe('POST COMMENT', () => {
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
       .type('form')
-      .set({"content-type": 'application/json', 
-            "Authorization": `Bearer ${token}` })
+      .set({
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      })
       .send(unexistComment)
       .end((error, res) => {
         expect(res.text).equals("User with this id doesn't exist");
@@ -107,8 +113,10 @@ describe('POST COMMENT', () => {
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
       .type('form')
-      .set({"content-type": 'application/json', 
-            "Authorization": `Bearer ${token}` })
+      .set({
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      })
       .send(incorrectUserComment)
       .end((error, res) => {
         expect(res.text).equals(
@@ -124,8 +132,10 @@ describe('POST COMMENT', () => {
       .request('http://localhost:3000/v1')
       .post('/form/2147483646/comment')
       .type('form')
-      .set({"content-type": 'application/json', 
-            "Authorization": `Bearer ${token}` })
+      .set({
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      })
       .send(incorrectComment)
       .end((error, res) => {
         expect(res.text).equals(
@@ -141,8 +151,10 @@ describe('POST COMMENT', () => {
       .request('http://localhost:3000/v1')
       .post('/form/2843299u/comment')
       .type('form')
-      .set({"content-type": 'application/json', 
-            "Authorization": `Bearer ${token}` })
+      .set({
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      })
       .send(comment)
       .end((error, res) => {
         expect(res.text).equals(

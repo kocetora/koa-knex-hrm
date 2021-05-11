@@ -4,3 +4,6 @@
 .stryker-tmp
 /reports/
 stryker.log
+/mochawesome-report/
+/coverage
+/jest-stare
