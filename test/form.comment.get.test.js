@@ -68,8 +68,7 @@ describe('GET COMMENT', () => {
       });
   });
 
-  afterAll(done => {
-    app.close();
-    done();
+  afterAll(() => {
+    app.stop();
   });
 });

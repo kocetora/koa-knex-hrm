@@ -165,8 +165,7 @@ describe('POST COMMENT', () => {
       });
   });
 
-  afterAll(done => {
-    app.close();
-    done();
+  afterAll(() => {
+    app.stop();
   });
 });

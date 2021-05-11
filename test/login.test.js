@@ -87,8 +87,77 @@ describe('LOGIN', () => {
       });
   });
 
-  afterAll(done => {
-    app.close();
-    done();
+  afterAll(() => {
+    app.stop();
   });
 });
+
+
+// SLOWER supertest example
+
+// 'use strict';
+// const server = require('../app');
+// const knex = require('../src/db/knex');
+// const supertest = require('supertest');
+
+// const user = {
+//   id: 2147483645,
+//   username: 'login1',
+//   role: 'user',
+//   password: 'password',
+// };
+
+// describe('LOGIN', function(){
+
+//   let request = null
+  
+//   beforeAll(function(done){
+//     request = supertest.agent(server)
+//     knex.migrate
+//       .latest()
+//       .then(() => knex.seed.run())
+//       .then(() => done());
+//   })
+
+//   it('should get /api/v1/laps/85299', function(){
+//     return request.post('/v1/auth/login')
+//       .type('form')
+//       .set('content-type', 'application/json')
+//       .send({
+//         username: user.username,
+//         password: user.password,
+//       })
+//       .expect(200, {
+//         userid: 2147483645,
+//         username: 'login1',
+//         role: 'user',
+//         token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxNDc0ODM2NDUsInVzZXJuYW1lIjoibG9naW4xIiwicm9sZSI6InVzZXIifQ.5YEMNQgqRbOO66ra_I9jlTRBATnIpZRiidxX7iAkqXw',
+//     })
+//   })
+
+//   it('username should be', function(){
+//     return request.post('/v1/auth/login')
+//       .type('form')
+//       .set('content-type', 'application/json')
+//       .send({
+//         username: '',
+//         password: user.password,
+//       })
+//       .expect(400, 'Wrong username. Should be longer than 2 and shorter then 128');
+//   });
+
+//   it('password should be', function(){
+//     return request.post('/v1/auth/login')
+//       .type('form')
+//       .set('content-type', 'application/json')
+//       .send({
+//         username: user.username,
+//         password: '',
+//       })
+//       .expect(400, 'Wrong password. Should be longer than 6 and shorter then 128');
+//   });
+
+//   afterAll(function(done){
+//     server.close();
+//   })
+// });

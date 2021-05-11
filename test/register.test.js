@@ -94,8 +94,7 @@ describe('REGISTER', () => {
       });
   });
 
-  afterAll(done => {
-    app.close();
-    done();
+  afterAll(() => {
+    app.stop();
   });
 });
