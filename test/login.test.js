@@ -86,4 +86,9 @@ describe('LOGIN', () => {
         done();
       });
   });
+
+  afterAll(done => {
+    app.close();
+    done();
+  });
 });

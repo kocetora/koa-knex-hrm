@@ -93,4 +93,9 @@ describe('REGISTER', () => {
         done();
       });
   });
+
+  afterAll(done => {
+    app.close();
+    done();
+  });
 });

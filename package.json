@@ -8,7 +8,7 @@
     "lint": "eslint --fix *.js && eslint --fix **/*.js && eslint --fix **/**/*.js",
     "prettier": "prettier --write .",
     "style": "npm run prettier && npm run lint",
-    "test": "jest --collect-coverage --watchAll=false --runInBand",
+    "test": "jest --watchAll=false --collect-coverage --runInBand --forceExit --detectOpenHandles",
     "prof": "node --prof app.js"
   },
   "dependencies": {
