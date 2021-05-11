@@ -52,27 +52,27 @@ describe('POST COMMENT', () => {
       .then(() => done());
   });
 
-  // it('200 successfully posted comment', (done) => {
-  //   chai
-  //     .request('http://localhost:3000/v1')
-  //     .post('/form/2147483646/comment')
-  //     .type('form')
-  //     .set({
-  //       'content-type': 'application/json',
-  //       Authorization: `Bearer ${token}`,
-  //     })
-  //     .send(comment)
-  //     .end((error, res) => {
-  //       expect(res.text).equals(
-  //         JSON.stringify({
-  //           success: true,
-  //           message: 'Request processed successfully',
-  //         })
-  //       );
-  //       expect(res).to.have.status(200);
-  //       done();
-  //     });
-  // });
+  it('200 successfully posted comment', (done) => {
+    chai
+      .request('http://localhost:3000/v1')
+      .post('/form/2147483646/comment')
+      .type('form')
+      .set({
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      })
+      .send(comment)
+      .end((error, res) => {
+        expect(res.text).equals(
+          JSON.stringify({
+            success: true,
+            message: 'Request processed successfully',
+          })
+        );
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
 
   it('404 not found form', (done) => {
     chai
@@ -91,22 +91,22 @@ describe('POST COMMENT', () => {
       });
   });
 
-  // it('404 not found user', (done) => {
-  //   chai
-  //     .request('http://localhost:3000/v1')
-  //     .post('/form/2147483646/comment')
-  //     .type('form')
-  //     .set({
-  //       'content-type': 'application/json',
-  //       Authorization: `Bearer ${token}`,
-  //     })
-  //     .send(unexistComment)
-  //     .end((error, res) => {
-  //       expect(res.text).equals("User with this id doesn't exist");
-  //       expect(res).to.have.status(404);
-  //       done();
-  //     });
-  // });
+  it('404 not found user', (done) => {
+    chai
+      .request('http://localhost:3000/v1')
+      .post('/form/2147483646/comment')
+      .type('form')
+      .set({
+        'content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      })
+      .send(unexistComment)
+      .end((error, res) => {
+        expect(res.text).equals("User with this id doesn't exist");
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
 
   it('400 incorect user id', (done) => {
     chai
