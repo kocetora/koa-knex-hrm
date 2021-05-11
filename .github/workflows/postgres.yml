@@ -1,4 +1,9 @@
-on: push
+name: Postgres start, Node install, run test
+on:
+  push:
+  pull_request:
+    branches: [master]
+    types: [opened, edited]
 jobs:
   # label of the container job
   postgres-job:
