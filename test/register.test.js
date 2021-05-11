@@ -84,7 +84,7 @@ describe('REGISTER', () => {
       .type('form')
       .set('content-type', 'application/json')
       .send({
-        username: 'login',
+        username: '12387324',
         password: 'password',
       })
       .end((error, res) => {
