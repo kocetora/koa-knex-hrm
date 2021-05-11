@@ -1,11 +1,9 @@
 name: Conventional commits
-
 on:
   push:
   pull_request:
     branches: [master]
     types: [opened, edited]
-
 jobs:
   check-conventional-commits:
     runs-on: ubuntu-latest
