@@ -25,23 +25,13 @@ app.use(passport.session());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-let server = app.listen(PORT, () => console.log(`🌍 Server listening on port ${PORT}`))
+const server = app.listen(PORT, () =>
+  console.log(`🌍 Server listening on port ${PORT}`)
+);
 
-// module.exports = server;
-
-// app.listen(PORT, () => {
-//   console.log(`Server has been stared on port ${PORT}`);
-// });
-
-// module.exports = app;
-
-// let server = app.listen(port, () => {
-//   console.log('App listening on port %s, in environment %s!', port, _.toUpper(process.env.NODE_ENV || ''));
-// });
-
-function stop() {
+const stop = () => {
   server.close();
-}
+};
 
 module.exports = server;
 module.exports.stop = stop;

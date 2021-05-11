@@ -1,17 +1,17 @@
-# name: Conventional commits
+name: Conventional commits
 
-# on:
-#   push:
-#   pull_request:
-#     branches: [master]
-#     types: [opened, edited]
+on:
+  push:
+  pull_request:
+    branches: [master]
+    types: [opened, edited]
 
-# jobs:
-#   check-conventional-commits:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Check commits
-#         uses: TriPSs/conventional-changelog-action@v3
-#         with:
-#           github-token: ${{ secrets.github_token }}
+jobs:
+  check-conventional-commits:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check commits
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.github_token }}

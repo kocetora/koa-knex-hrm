@@ -20,13 +20,11 @@ const user = {
 const token = auth.getToken(user.id, user.username, user.role);
 
 describe('GET COMMENT', () => {
-  
   beforeAll((done) => {
     knex.migrate
       .latest()
       .then(() => knex.seed.run())
       .then(() => done());
-    
   });
 
   it('200 successfully got comment', (done) => {

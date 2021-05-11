@@ -92,7 +92,6 @@ describe('LOGIN', () => {
   });
 });
 
-
 // SLOWER supertest example
 
 // 'use strict';
@@ -110,7 +109,7 @@ describe('LOGIN', () => {
 // describe('LOGIN', function(){
 
 //   let request = null
-  
+
 //   beforeAll(function(done){
 //     request = supertest.agent(server)
 //     knex.migrate
