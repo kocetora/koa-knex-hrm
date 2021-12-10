@@ -10,10 +10,10 @@ const key = Buffer.from(process.env.SALSA20_KEY, 'utf-8');
 
 const encryptWithSalsa20 = async(data) => {
   const salt = crypto.randomBytes(24);
-  const xor = xsalsa20(salt, key)
-  const encrypted = Buffer.from(xor.update(data)).toString('hex');
-  const saltHex = salt.toString('hex')
-  return `${saltHex}$${encrypted}`;
+  const xor = xsalsa20(salt, key);
+  const encrypted = Buffer.from(xor.update(Buffer.from(data))).toString('hex');
+  const hexSalt = salt.toString('hex');
+  return `${hexSalt}$${encrypted}`;
 }
 
 const register = async ({ address, email, password }) => 

@@ -15,17 +15,16 @@ const decryptWithSalsa20 = (data) => {
 };
 
 const login = async ({ email, password }) => {
-  console.log(email)
-  const dbEmail = findUser(email)
+  const dbEmail = await findUser(email);
   if (dbEmail != null) {
     const [user] = await queries.getUser(dbEmail);
     const passwordFromHash = await argon.verify(user.password, password);
     if (passwordFromHash) {
       return {
         userid: user.id,
-        address: decryptWithSalsa20(user.address),
+        address: await decryptWithSalsa20(user.address),
         email,
-        token: auth.getToken(id, email),
+        token: auth.getToken(user.id, email),
       };
     } else {
       const error = new Error('email or password is incorrect');
