@@ -5,10 +5,11 @@ const argon = require('argon2');
 const { findUser } = require('./findUser');
 
 const login = async ({ email, password }) => {
-  const [user] = await queries.getUser(email);
-  if (user) {
+  const id = findUser(email)
+  if (id != null) {
+    const [user] = await queries.getUser(id);
     const passwordFromHash = await argon.verify(user.password, password);
-    if (email === user.email && passwordFromHash) {
+    if (passwordFromHash) {
       return {
         userid: user.id,
         address: user.address,
