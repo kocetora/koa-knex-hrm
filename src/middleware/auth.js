@@ -4,8 +4,8 @@ const jwt = require('jsonwebtoken');
 const privateKey = process.env.JWT_KEY;
 
 module.exports = {
-  getToken(userId, username) {
-    const payload = { userId, username };
+  getToken(userId, email) {
+    const payload = { userId, email };
     return jwt.sign(payload, privateKey, {
       algorithm: 'HS256',
       noTimestamp: true,

@@ -3,12 +3,12 @@
 exports.up = function(knex) {
   return knex.schema.createTable('users', table => {
     table.increments('id').unsigned().primary();
-    table.string('username').unique().notNullable();
+    table.string('address').unique().notNullable();
     table.string('password').notNullable();
     table.string('email').notNullable();
   });
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('users').raw('DROP TYPE role');
+  return knex.schema.dropTable('users');
 };
