@@ -2,7 +2,6 @@
 
 const logout = async ctx => {
   try {
-    // TODO: jwt and session
     ctx.body = {
       success: true,
       message: 'Request processed successfully',

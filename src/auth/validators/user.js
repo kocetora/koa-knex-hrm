@@ -2,7 +2,7 @@
 const { isLength } = require('validator');
 
 const user = (ctx, next) => {
-  const { username, password } = ctx.request.body;
+  const { username, password, email } = ctx.request.body;
 
   if (
     !username ||
@@ -28,6 +28,15 @@ const user = (ctx, next) => {
       400,
       'Wrong password. Should be longer than 6 and shorter then 128'
     );
+  }
+
+  if (
+    !email ||
+    !isEmail(email, {
+      max: 128,
+    })
+  ) {
+    return ctx.throw(400, 'Incorrect email');
   }
 
   return next();

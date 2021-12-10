@@ -4,11 +4,11 @@ const argon = require('argon2');
 const user = {
   id: 2147483646,
   username: 'admin-user',
-  role: 'admin',
+  email: 'admin@mail.com',
 };
 
 (async () => {
-  user.password_hash = await argon.hash('kyuUJD');
+  user.password = await argon.hash('kyuUJD');
 })();
 
 function createUser(knex) {

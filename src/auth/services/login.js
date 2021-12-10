@@ -6,13 +6,13 @@ const argon = require('argon2');
 const login = async ({ username, password }) => {
   const [user] = await queries.getUser(username);
   if (user) {
-    const passwordFromHash = await argon.verify(user.password_hash, password);
+    const passwordFromHash = await argon.verify(user.password, password);
     if (username === user.username && passwordFromHash) {
       return {
         userid: user.id,
         username: user.username,
-        role: user.role,
-        token: auth.getToken(user.id, user.username, user.role),
+        email: user.email,
+        token: auth.getToken(user.id, user.username),
       };
     } else {
       const error = new Error('Username or password is incorrect');

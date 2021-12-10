@@ -1,9 +1,0 @@
-/node_modules/
-.env
-.nyc_output
-.stryker-tmp
-/reports/
-stryker.log
-/mochawesome-report/
-/coverage
-/jest-stare

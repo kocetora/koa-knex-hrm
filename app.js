@@ -14,12 +14,8 @@ const router = new Router({
 });
 
 const authRouter = require('./src/auth/router');
-const formRouter = require('./src/form/router');
-const baseRouter = require('./src/base/router');
 
 router.use(authRouter.routes());
-router.use(formRouter.routes());
-router.use(baseRouter.routes());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(router.routes());

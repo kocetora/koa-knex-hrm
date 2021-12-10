@@ -1,10 +1,11 @@
 'use strict';
+require('dotenv').config()
 const jwt = require('jsonwebtoken');
-const privateKey = 'any very secret key';
+const privateKey = process.env.JWT_KEY;
 
 module.exports = {
-  getToken(userID, username, role) {
-    const payload = { userId: userID, username, role };
+  getToken(userId, username) {
+    const payload = { userId, username };
     return jwt.sign(payload, privateKey, {
       algorithm: 'HS256',
       noTimestamp: true,
