@@ -4,14 +4,12 @@ const passport = require('koa-passport');
 const Router = require('koa-router');
 const cors = require('@koa/cors');
 const bodyParser = require('koa-bodyparser');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 const app = new Koa();
 app.use(cors());
 app.use(bodyParser({ jsonLimit: '50mb' }));
-const router = new Router({
-  prefix: '/v1',
-});
+const router = new Router();
 
 const authRouter = require('./src/auth/router');
 

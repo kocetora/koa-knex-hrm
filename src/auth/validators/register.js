@@ -1,7 +1,7 @@
 'use strict';
-const { isLength } = require('validator');
+const { isLength, isEmail } = require('validator');
 
-const user = (ctx, next) => {
+const register = (ctx, next) => {
   const { username, password, email } = ctx.request.body;
 
   if (
@@ -43,5 +43,5 @@ const user = (ctx, next) => {
 };
 
 module.exports = {
-  user,
+  register,
 };

@@ -9,8 +9,8 @@ const router = new Router({
 });
 
 router
-  .post('/register', validators.user, controllers.register)
-  .post('/login', validators.user, controllers.login)
+  .post('/register', validators.register, controllers.register)
+  .post('/login', validators.register, controllers.login)
   .get('/logout', middlewares.check, controllers.logout)
 
 module.exports = router;

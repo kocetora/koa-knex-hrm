@@ -1,6 +1,6 @@
 'use strict';
-const { user } = require('./user');
+const { register } = require('./register');
 
 module.exports = {
-  user,
+  register,
 };
