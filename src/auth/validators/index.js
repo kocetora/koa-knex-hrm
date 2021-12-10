@@ -1,6 +1,8 @@
 'use strict';
-const { register } = require('./register');
+const { address } = require('./address');
+const { emailAndPassword } = require('./emailAndPassword');
 
 module.exports = {
-  register,
+  address,
+  emailAndPassword,
 };

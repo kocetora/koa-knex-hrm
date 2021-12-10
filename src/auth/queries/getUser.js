@@ -1,7 +1,7 @@
 'use strict';
 const knex = require('../../db/knex');
 
-const getUser = id => knex('users').where({ id }).select();
+const getUser = email => knex('users').where({ email }).select();
 
 module.exports = {
   getUser,

@@ -5,6 +5,7 @@ const user = {
   id: 2147483646,
   address: 'admin-user',
   email: 'admin@mail.com',
+  password: 'dslkvn'
 };
 
 (async () => {

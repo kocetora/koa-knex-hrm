@@ -1,21 +1,8 @@
 'use strict';
 const { isLength, isEmail } = require('validator');
 
-const register = (ctx, next) => {
-  const { address, password, email } = ctx.request.body;
-
-  if (
-    !address ||
-    !isLength(address, {
-      min: 2,
-      max: 128,
-    })
-  ) {
-    return ctx.throw(
-      400,
-      'Wrong address. Should be longer than 2 and shorter then 128'
-    );
-  }
+const emailAndPassword = (ctx, next) => {
+  const { password, email } = ctx.request.body;
 
   if (
     !password ||
@@ -43,5 +30,5 @@ const register = (ctx, next) => {
 };
 
 module.exports = {
-  register,
+  emailAndPassword,
 };
