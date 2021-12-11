@@ -1,7 +1,7 @@
 'use strict';
 const Services = require('../services/index');
 
-const login = async ctx => {
+const login = async (ctx) => {
   try {
     const user = await Services.login(ctx.request.body);
     ctx.body = user;
@@ -11,5 +11,5 @@ const login = async ctx => {
 };
 
 module.exports = {
-  login,
+  login
 };

@@ -8,19 +8,16 @@ const emailAndPassword = (ctx, next) => {
     !password ||
     !isLength(password, {
       min: 6,
-      max: 128,
+      max: 128
     })
   ) {
-    return ctx.throw(
-      400,
-      'Wrong password. Should be longer than 6 and shorter then 128'
-    );
+    return ctx.throw(400, 'Wrong password. Should be longer than 6 and shorter then 128');
   }
 
   if (
     !email ||
     !isEmail(email, {
-      max: 128,
+      max: 128
     })
   ) {
     return ctx.throw(400, 'Incorrect email. Should be longer than 6 and shorter then 128');
@@ -30,5 +27,5 @@ const emailAndPassword = (ctx, next) => {
 };
 
 module.exports = {
-  emailAndPassword,
+  emailAndPassword
 };

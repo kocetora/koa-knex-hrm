@@ -1,12 +1,12 @@
 'use strict';
 const Services = require('../services/index');
 
-const register = async ctx => {
+const register = async (ctx) => {
   try {
     await Services.register(ctx.request.body);
     ctx.body = {
       success: true,
-      message: 'Request processed successfully',
+      message: 'Request processed successfully'
     };
   } catch (err) {
     ctx.status = err.code;
@@ -15,5 +15,5 @@ const register = async ctx => {
 };
 
 module.exports = {
-  register,
+  register
 };

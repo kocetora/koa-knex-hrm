@@ -8,18 +8,15 @@ const address = (ctx, next) => {
     !address ||
     !isLength(address, {
       min: 2,
-      max: 128,
+      max: 128
     })
   ) {
-    return ctx.throw(
-      400,
-      'Wrong address. Should be longer than 2 and shorter then 128'
-    );
+    return ctx.throw(400, 'Wrong address. Should be longer than 2 and shorter then 128');
   }
 
   return next();
 };
 
 module.exports = {
-  address,
+  address
 };

@@ -6,5 +6,5 @@ const { getUserEmails } = require('./getUserEmails');
 module.exports = {
   addUser,
   getUser,
-  getUserEmails,
+  getUserEmails
 };

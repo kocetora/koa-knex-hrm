@@ -17,5 +17,5 @@ const check = (ctx, next) => {
 };
 
 module.exports = {
-  check,
+  check
 };

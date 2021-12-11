@@ -1,5 +1,5 @@
 'use strict';
-require('dotenv').config()
+require('dotenv').config();
 const queries = require('../queries/index');
 const auth = require('../../middleware/auth');
 const argon = require('argon2');
@@ -16,7 +16,7 @@ const decryptWithSalsa20 = (data) => {
 
 const login = async ({ email, password }) => {
   const dbEmail = await findUser(email);
-  if (dbEmail != null) {
+  if (dbEmail !== null) {
     const [user] = await queries.getUser(dbEmail);
     const passwordFromHash = await argon.verify(user.password, password);
     if (passwordFromHash) {
@@ -24,7 +24,7 @@ const login = async ({ email, password }) => {
         userid: user.id,
         address: await decryptWithSalsa20(user.address),
         email,
-        token: auth.getToken(user.id, email),
+        token: auth.getToken(user.id, email)
       };
     } else {
       const error = new Error('email or password is incorrect');
@@ -32,12 +32,12 @@ const login = async ({ email, password }) => {
       throw error;
     }
   } else {
-    const error = new Error('User with this email doesn\'t exist');
+    const error = new Error("User with this email doesn't exist");
     error.code = 404;
     throw error;
   }
 };
 
 module.exports = {
-  login,
+  login
 };

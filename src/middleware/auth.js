@@ -1,5 +1,5 @@
 'use strict';
-require('dotenv').config()
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const privateKey = process.env.JWT_KEY;
 
@@ -8,10 +8,10 @@ module.exports = {
     const payload = { userId, email };
     return jwt.sign(payload, privateKey, {
       algorithm: 'HS256',
-      noTimestamp: true,
+      noTimestamp: true
     });
   },
   decodeToken(token) {
     return jwt.verify(token, privateKey);
-  },
+  }
 };

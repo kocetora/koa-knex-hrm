@@ -19,9 +19,7 @@ app.use(passport.session());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-const server = app.listen(PORT, () =>
-  console.log(`🌍 Server listening on port ${PORT}`)
-);
+const server = app.listen(PORT, () => console.log(`🌍 Server listening on port ${PORT}`));
 
 const stop = () => {
   server.close();

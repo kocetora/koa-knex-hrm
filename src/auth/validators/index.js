@@ -4,5 +4,5 @@ const { emailAndPassword } = require('./emailAndPassword');
 
 module.exports = {
   address,
-  emailAndPassword,
+  emailAndPassword
 };
