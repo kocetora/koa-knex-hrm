@@ -4,7 +4,7 @@
   "description": "Lab 05 for security from https://github.com/kocetora/koa-knex-hrm template",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "lint": "eslint . --ignore-path .gitignore",
     "prettier": "prettier --write --ignore-path .gitignore .",
     "format": "npm run prettier && npm run lint"
