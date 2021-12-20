@@ -4,7 +4,7 @@
   "description": "Lab 05 for security from https://github.com/kocetora/koa-knex-hrm template",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "lint": "eslint . --ignore-path .gitignore",
     "prettier": "prettier --write --ignore-path .gitignore .",
     "format": "npm run prettier && npm run lint"
@@ -17,6 +17,7 @@
     "knex": "^0.21.13",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
+    "koa-force-https": "^2.0.1",
     "koa-passport": "^4.1.3",
     "koa-router": "^9.4.0",
     "objects-to-csv": "^1.3.6",
