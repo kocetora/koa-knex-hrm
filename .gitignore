@@ -8,3 +8,4 @@ stryker.log
 /mochawesome-report/
 /coverage
 /jest-stare
+*.pem
