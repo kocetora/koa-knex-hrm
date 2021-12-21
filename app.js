@@ -10,13 +10,17 @@ const bodyParser = require('koa-bodyparser');
 const HOSTNAME = process.env.HOSTNAME || 'localhost';
 const PORT = process.env.PORT || 4000;
 const HTTP_PORT = process.env.HTTP_PORT || 4001;
+const KEY_PATH = process.env.KEY_PATH || 'localhost-key.pem';
+const CERT_PATH = process.env.CERT_PATH || 'localhost.pem';
+const CA_PATH = process.env.CA_PATH || 'localhost-ca.pem';
+
 
 const app = new Koa();
 
 const options = {
-  key: fs.readFileSync('localhost-key.pem'),
-  cert: fs.readFileSync('localhost.pem'),
-  ca: fs.readFileSync('localhost-ca.pem')
+  key: fs.readFileSync(KEY_PATH),
+  cert: fs.readFileSync(CERT_PATH),
+  ca: fs.readFileSync(CA_PATH)
 };
 
 app.use(cors());
