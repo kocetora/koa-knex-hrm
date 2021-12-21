@@ -9,3 +9,4 @@ stryker.log
 /coverage
 /jest-stare
 *.pem
+*.key
