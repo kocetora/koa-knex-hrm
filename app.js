@@ -15,7 +15,8 @@ const app = new Koa();
 
 const options = {
   key: fs.readFileSync('localhost-key.pem'),
-  cert: fs.readFileSync('localhost.pem')
+  cert: fs.readFileSync('localhost.pem'),
+  ca: fs.readFileSync('localhost-ca.pem')
 };
 
 app.use(cors());
@@ -23,6 +24,14 @@ app.use(bodyParser({ jsonLimit: '50mb' }));
 const router = new Router();
 
 const authRouter = require('./src/auth/router');
+
+router.use(async (ctx, next) => {
+  if (ctx.protocol === 'http') {
+    ctx.status = 301;
+    return ctx.redirect(`https://${HOSTNAME}:${PORT}${ctx.url}`);
+  }
+  await next();
+});
 router.get('/', (ctx, next) => {
   ctx.status = 200;
   ctx.body = {
@@ -30,19 +39,11 @@ router.get('/', (ctx, next) => {
     message: 'Reached server'
   };
 });
-
 router.use(authRouter.routes());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(router.routes());
 app.use(router.allowedMethods());
-
-router.use((req, res, next) => {
-  if (req.protocol === 'http') {
-    res.redirect(301, `https://${req.headers.host}${req.url}`);
-  }
-  next();
-});
 
 const server = https.createServer(options, app.callback()).listen(PORT, HOSTNAME);
 const httpServer = http.createServer(app.callback()).listen(HTTP_PORT, HOSTNAME);
